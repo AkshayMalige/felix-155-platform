@@ -1,0 +1,14 @@
+{
+   "comment_0":"\t \t \t =============== >>>> An Example Versal Extensible Embedded Platform <<<< ===============
+	\t Note: 
+	\t --> SD boot mode and UART are enabled in the CIPS / PS Wizard
+	\t --> Execute TCL command: launch_simulation -scripts_only ,to establish the sim_1 source set hierarchy after successful design creation",
+   "commentid":"comment_0|",
+   "font_comment_0":"14",
+   "linktoobj_comment_0":"",
+   "linktotype_comment_0":"bd_design"
+}
+0
+{
+   "/comment0":"comment_0"
+}
