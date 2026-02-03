@@ -141,63 +141,63 @@ if [ "$SKIP_BUILD" -eq 1 ]; then
     exit 0
 fi
 
-# # ================= 4. Build System =================
-# echo "[4/6] Building PetaLinux System (Kernel, RootFS, Bootloader)..."
-# petalinux-build
+# ================= 4. Build System =================
+echo "[4/6] Building PetaLinux System (Kernel, RootFS, Bootloader)..."
+petalinux-build
 
-# # ================= 5. Build SDK (Sysroot) =================
-# echo "[5/6] Building SDK (Sysroot) for Host App Compilation..."
-# petalinux-build --sdk
-# petalinux-package --sysroot
+# ================= 5. Build SDK (Sysroot) =================
+echo "[5/6] Building SDK (Sysroot) for Host App Compilation..."
+petalinux-build --sdk
+petalinux-package --sysroot
 
-# # ================= 6. Package Boot Image =================
-# echo "[6/6] Packaging BOOT.BIN..."
-# petalinux-package --boot --plm --psmfw --u-boot --dtb --force
+# ================= 6. Package Boot Image =================
+echo "[6/6] Packaging BOOT.BIN..."
+petalinux-package --boot --plm --psmfw --u-boot --dtb --force
 
-# # ================= 7. Organize Artifacts =================
-# echo "[7/7] Organizing Artifacts into 'sw' directory..."
-# SW_DIR="$PWD/sw"
-# mkdir -p "$SW_DIR/boot"
-# mkdir -p "$SW_DIR/sd_dir"
-# mkdir -p "$SW_DIR/sw_comp"
+# ================= 7. Organize Artifacts =================
+echo "[7/7] Organizing Artifacts into 'sw' directory..."
+SW_DIR="$PWD/sw"
+mkdir -p "$SW_DIR/boot"
+mkdir -p "$SW_DIR/sd_dir"
+mkdir -p "$SW_DIR/sw_comp"
 
-# echo "Copying boot files..."
-# # sw/boot: Copy all .elf, .img, .dtb files
-# find images/linux/ -maxdepth 1 -name "*.elf" -exec cp {} "$SW_DIR/boot/" \;
-# find images/linux/ -maxdepth 1 -name "*.img" -exec cp {} "$SW_DIR/boot/" \;
-# find images/linux/ -maxdepth 1 -name "*.dtb" -exec cp {} "$SW_DIR/boot/" \;
+echo "Copying boot files..."
+# sw/boot: Copy all .elf, .img, .dtb files
+find images/linux/ -maxdepth 1 -name "*.elf" -exec cp {} "$SW_DIR/boot/" \;
+find images/linux/ -maxdepth 1 -name "*.img" -exec cp {} "$SW_DIR/boot/" \;
+find images/linux/ -maxdepth 1 -name "*.dtb" -exec cp {} "$SW_DIR/boot/" \;
 
-# echo "Copying SD directory files..."
-# # sw/sd_dir: Copy boot.scr
-# if [ -f "images/linux/boot.scr" ]; then
-#     cp images/linux/boot.scr "$SW_DIR/sd_dir/"
-# fi
+echo "Copying SD directory files..."
+# sw/sd_dir: Copy boot.scr
+if [ -f "images/linux/boot.scr" ]; then
+    cp images/linux/boot.scr "$SW_DIR/sd_dir/"
+fi
 
-# echo "Copying SW components..."
-# # sw/sw_comp: Copy 'Image', 'rootfs.ext4'
-# if [ -f "images/linux/Image" ]; then
-#     cp images/linux/Image "$SW_DIR/sw_comp/"
-# fi
-# if [ -f "images/linux/rootfs.ext4" ]; then
-#     cp images/linux/rootfs.ext4 "$SW_DIR/sw_comp/"
-# fi
+echo "Copying SW components..."
+# sw/sw_comp: Copy 'Image', 'rootfs.ext4'
+if [ -f "images/linux/Image" ]; then
+    cp images/linux/Image "$SW_DIR/sw_comp/"
+fi
+if [ -f "images/linux/rootfs.ext4" ]; then
+    cp images/linux/rootfs.ext4 "$SW_DIR/sw_comp/"
+fi
 
-# # sw/sw_comp: Copy environment-setup-*, version-*, and install sysroot
-# if [ -d "images/linux/sdk" ]; then
-#     find images/linux/sdk/ -maxdepth 1 -name "environment-setup-*" -exec cp {} "$SW_DIR/sw_comp/" \;
-#     find images/linux/sdk/ -maxdepth 1 -name "version-*" -exec cp {} "$SW_DIR/sw_comp/" \;
+# sw/sw_comp: Copy environment-setup-*, version-*, and install sysroot
+if [ -d "images/linux/sdk" ]; then
+    find images/linux/sdk/ -maxdepth 1 -name "environment-setup-*" -exec cp {} "$SW_DIR/sw_comp/" \;
+    find images/linux/sdk/ -maxdepth 1 -name "version-*" -exec cp {} "$SW_DIR/sw_comp/" \;
     
-#     if [ -d "images/linux/sdk/sysroots" ]; then
-#         echo "Installing sysroot to $SW_DIR/sw_comp/sysroots..."
-#         cp -r images/linux/sdk/sysroots "$SW_DIR/sw_comp/"
-#     fi
-# fi
+    if [ -d "images/linux/sdk/sysroots" ]; then
+        echo "Installing sysroot to $SW_DIR/sw_comp/sysroots..."
+        cp -r images/linux/sdk/sysroots "$SW_DIR/sw_comp/"
+    fi
+fi
 
-# echo "=========================================="
-# echo " Build Success!"
-# echo "=========================================="
-# echo "Artifacts organized in: $SW_DIR"
-# echo "  - Boot:        $SW_DIR/boot"
-# echo "  - SD Dir:      $SW_DIR/sd_dir"
-# echo "  - SW Comp:     $SW_DIR/sw_comp"
-# echo "=========================================="
+echo "=========================================="
+echo " Build Success!"
+echo "=========================================="
+echo "Artifacts organized in: $SW_DIR"
+echo "  - Boot:        $SW_DIR/boot"
+echo "  - SD Dir:      $SW_DIR/sd_dir"
+echo "  - SW Comp:     $SW_DIR/sw_comp"
+echo "=========================================="
