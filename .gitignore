@@ -1,0 +1,26 @@
+# Vivado / PetaLinux generated files
+*.jou
+*.log
+.Xil/
+
+# Base platform
+base_platform/.Xil/
+base_platform/project_build/
+base_platform/src/ipshared/
+base_platform/*.jou
+base_platform/*.log
+
+# PetaLinux project
+versal_linux/my_foe_flx/.Xil/
+versal_linux/my_foe_flx/build/
+versal_linux/my_foe_flx/components/
+versal_linux/my_foe_flx/images/
+versal_linux/my_foe_flx/sw/
+versal_linux/my_foe_flx/.petalinux/
+!versal_linux/my_foe_flx/.petalinux/metadata
+versal_linux/my_foe_flx/project-spec/hw-description/extracted/
+versal_linux/my_foe_flx/project-spec/hw-description/*.pdi
+versal_linux/my_foe_flx/project-spec/hw-description/*.isd
+
+# Other
+fixed_qemu_args.txt
