@@ -15,7 +15,6 @@ versal_linux/my_foe_flx/.Xil/
 versal_linux/my_foe_flx/build/
 versal_linux/my_foe_flx/components/
 versal_linux/my_foe_flx/images/
-versal_linux/my_foe_flx/sw/
 versal_linux/my_foe_flx/.petalinux/
 !versal_linux/my_foe_flx/.petalinux/metadata
 versal_linux/my_foe_flx/project-spec/hw-description/extracted/
