@@ -1,6 +1,5 @@
 # Vivado / PetaLinux generated files
 *.jou
-*.log
 .Xil/
 
 # Base platform
