@@ -42,7 +42,7 @@ mode=5
 with open(qemu_args_path, "w") as f:
     f.write(qemu_args_content)
 
-PLATFORM_NAME = "xcvp1552_custom"
+PLATFORM_NAME = "xcvp1552_custom_flx"
 
 if not os.path.exists(WORKSPACE_DIR):
     os.makedirs(WORKSPACE_DIR)
