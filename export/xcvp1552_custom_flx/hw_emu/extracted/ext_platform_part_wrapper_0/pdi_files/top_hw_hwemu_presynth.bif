@@ -1,0 +1,51 @@
+new_bif:
+{
+ id_code = 0x14d34093
+ extended_id_code = 0x01
+ id = 0x2
+ image
+ {
+  name = pmc_subsys
+  id = 0x1c000001
+  partition
+  {
+   id = 0x01
+   type = bootloader
+   file = .Xil/Vivado-2987780-synthara-Super-Server/presynth_pdi/gen_files/plm.elf
+  }
+  partition
+  {
+   id = 0x09
+   type = pmcdata, load = 0xf2000000
+   file = .Xil/Vivado-2987780-synthara-Super-Server/presynth_pdi/gen_files/pmc_data.cdo
+  }
+ }
+ image
+ {
+  name = lpd
+  id = 0x4210002
+  partition
+  {
+   id = 0x0C
+   type = cdo
+   file = .Xil/Vivado-2987780-synthara-Super-Server/presynth_pdi/gen_files/lpd_data.cdo
+  }
+  partition
+  {
+   id = 0x0B
+   core = psm
+   file = .Xil/Vivado-2987780-synthara-Super-Server/presynth_pdi/static_files/psm_fw.elf
+  }
+ }
+ image
+ {
+  name = fpd
+  id = 0x420c003
+  partition
+  {
+   id = 0x08
+   type = cdo
+   file = .Xil/Vivado-2987780-synthara-Super-Server/presynth_pdi/gen_files/fpd_data.cdo
+  }
+ }
+}
