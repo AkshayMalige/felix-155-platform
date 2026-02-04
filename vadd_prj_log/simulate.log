@@ -1,0 +1,421 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Wed Feb  4 15:24:28 2026
+# Process ID         : 3912187
+# Current directory  : /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/vadd_project/vadd/build/hw_emu/package/package/sim/behav_waveform/xsim
+# Command line       : xsim -log simulate.log -source {xsim.dir/ext_platform_part_wrapper_sim_wrapper_behav/xsim_script.tcl}
+# Log file           : /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/vadd_project/vadd/build/hw_emu/package/package/sim/behav_waveform/xsim/simulate.log
+# Journal file       : /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/vadd_project/vadd/build/hw_emu/package/package/sim/behav_waveform/xsim/xsim.jou
+# Running On         : synthara-Super-Server
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : AMD EPYC 9354P 32-Core Processor
+# CPU Frequency      : 1500.000 MHz
+# CPU Physical cores : 32
+# CPU Logical cores  : 64
+# Host memory        : 405240 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 407387 MB
+# Available Virtual  : 347428 MB
+#-----------------------------------------------------------
+start_gui
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:ac701:part0:1.4 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/ac701/1.4/board.xml as part xc7a200tfbg676-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.7 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.7/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:sp701:part0:1.0 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/sp701/1.0/board.xml as part xc7s100fgga676-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:sp701:part0:1.1 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/sp701/1.1/board.xml as part xc7s100fgga676-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.4/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.5 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.5/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc709/1.8/board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vrk160:part0:1.0 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vrk160/1.0/board.xml as part xcvr1602-vsva2488-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vrk160:part0:1.1 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vrk160/1.1/board.xml as part xcvr1602-vsva2488-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /tools/Xilinx/2025.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+source xsim.dir/ext_platform_part_wrapper_sim_wrapper_behav/xsim_script.tcl
+# set_param project.enableReportConfiguration 0
+# load_feature core
+# current_fileset
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/2025.2/data/ip'.
+# xsim {ext_platform_part_wrapper_sim_wrapper_behav} -autoloadwcfg -tclbatch {ext_platform_part_wrapper_sim_wrapper.tcl} -runall -key {Behavioral:sim_1:Functional:ext_platform_part_wrapper_sim_wrapper} -protoinst {protoinst_files/bd_5156.protoinst} -protoinst {protoinst_files/bd_152a.protoinst} -protoinst {protoinst_files/bd_a217.protoinst} -protoinst {protoinst_files/bd_4673.protoinst} -protoinst {protoinst_files/bd_61d2.protoinst} -protoinst {protoinst_files/ext_platform_part.protoinst} -protoinst {protoinst_files/xlnoc.protoinst} -protoinst {/home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/vadd_project/vadd/build/hw_emu/package/package/sim/behav_waveform/xsim/dr_behav.protoinst}
+Using new arbitration logic
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+ WARNING:: DPA_HUB(Emulation Profiler Core) is deprecated and it will be not available in future release.
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_hub.inst.s_aximm_wr_util. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_hub.inst.s_aximm_wr_util_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.rd_mon.rd_skt_0. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.rd_mon.rd_skt_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.wr_mon.wr_skt_0. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.wr_mon.wr_skt_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.mon_saxi_rd_socket_0. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.mon_saxi_rd_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.mon_saxi_wr_socket_0. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.VitisRegion.System_DPA.dpa_mon0.inst.mon_saxi_wr_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Info: (I804) /IEEE_Std_1666/deprecated: sc_sensitive_neg is deprecated use sc_sensitive << with neg() instead
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_1
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_1
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_2
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_2
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_3
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_3
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_4
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_4
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_5
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_5
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_6
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_6
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.rd_socket_7
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket. Latter declaration will be renamed to .ext_platform_part_wrapper_sim_wrapper.ext_platform_part_wrapper_i.ext_platform_part_i.cips_noc.inst.wr_socket_7
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+INFO::[ DDR-STORAGE ] Creating initial 2GB DRAM file image:qemu-memory-_mem_0x80000000@0x800000000ULL
+*****************running enhanced NoC-V1 SystemC model*************
+
+Info: (I804) /IEEE_Std_1666/deprecated: sc_sensitive_pos is deprecated use sc_sensitive << with pos() instead
+
+Info: (I804) /IEEE_Std_1666/deprecated: sc_object::get_parent() is deprecated, use get_parent_object() instead
+TraceManager type=nothing
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/bd_5156.protoinst
+WARNING: [Wavedata 42-558] Couldn't load one or more protocol instances from protoinst file protoinst_files/bd_5156.protoinst for the following reason(s):
+There are no instances of module "bd_5156" in the design.
+
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/bd_152a.protoinst
+WARNING: [Wavedata 42-558] Couldn't load one or more protocol instances from protoinst file protoinst_files/bd_152a.protoinst for the following reason(s):
+There are no instances of module "bd_152a" in the design.
+
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/bd_a217.protoinst
+WARNING: [Wavedata 42-558] Couldn't load one or more protocol instances from protoinst file protoinst_files/bd_a217.protoinst for the following reason(s):
+There are no instances of module "bd_a217" in the design.
+
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/bd_4673.protoinst
+WARNING: [Wavedata 42-558] Couldn't load one or more protocol instances from protoinst file protoinst_files/bd_4673.protoinst for the following reason(s):
+There are no instances of module "bd_4673" in the design.
+
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/bd_61d2.protoinst
+WARNING: [Wavedata 42-558] Couldn't load one or more protocol instances from protoinst file protoinst_files/bd_61d2.protoinst for the following reason(s):
+There are no instances of module "bd_61d2" in the design.
+
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/ext_platform_part.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_AXI_NOC_0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_AXI_NOC_1
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_1
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_2
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_3
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/LPD_AXI_NOC_0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/M_AXI_FPD
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/PMC_NOC_AXI_0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/PMC_NOC_AXI_1
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/S_AXIMM
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/S_AXIMM
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/M02_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/S_AXIFIFO
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/S_AXIHUB
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/S_AXIMM
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/TRACE_IN_0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/TRACE_IN_1
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_mon0/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_mon0/TRACE_OUT_0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_mon0/TRACE_OUT_1
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/m_axi_gmem0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/s_axi_control
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/vadd_1/m_axi_gmem0
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/vadd_1/s_axi_control
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//axi_intc_0/s_axi
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S02_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S03_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S04_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S05_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S06_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S07_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S08_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M02_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M03_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//noc_ddr4/S00_AXI
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/xlnoc.protoinst
+INFO: [Wavedata 42-565] Reading protoinst file /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/vadd_project/vadd/build/hw_emu/package/package/sim/behav_waveform/xsim/dr_behav.protoinst
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_AXI_NOC_0" was created but is non-functional for the following reason(s):
+Couldn't find port object "FPD_AXI_NOC_0_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "FPD_AXI_NOC_0_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_AXI_NOC_1" was created but is non-functional for the following reason(s):
+Couldn't find port object "FPD_AXI_NOC_1_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "FPD_AXI_NOC_1_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_0" was created but is non-functional for the following reason(s):
+Couldn't find port object "FPD_CCI_NOC_0_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "FPD_CCI_NOC_0_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_1" was created but is non-functional for the following reason(s):
+Couldn't find port object "FPD_CCI_NOC_1_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "FPD_CCI_NOC_1_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_2" was created but is non-functional for the following reason(s):
+Couldn't find port object "FPD_CCI_NOC_2_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "FPD_CCI_NOC_2_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/FPD_CCI_NOC_3" was created but is non-functional for the following reason(s):
+Couldn't find port object "FPD_CCI_NOC_3_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "FPD_CCI_NOC_3_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/LPD_AXI_NOC_0" was created but is non-functional for the following reason(s):
+Couldn't find port object "LPD_AXI_NOC_0_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "LPD_AXI_NOC_0_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/M_AXI_FPD" was created but is non-functional for the following reason(s):
+Couldn't find port object "M_AXI_FPD_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M_AXI_FPD_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/PMC_NOC_AXI_0" was created but is non-functional for the following reason(s):
+Couldn't find port object "PMC_NOC_AXI_0_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "PMC_NOC_AXI_0_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//CIPS_0/PMC_NOC_AXI_1" was created but is non-functional for the following reason(s):
+Couldn't find port object "PMC_NOC_AXI_1_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "PMC_NOC_AXI_1_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/M00_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "M00_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M00_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/M01_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "M01_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M01_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/M02_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "M02_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M02_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_ctrl_interconnect/S00_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S00_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S00_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/S_AXIFIFO" was created but is non-functional for the following reason(s):
+Couldn't find port object "axilite_rd_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "axilite_wr_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/S_AXIHUB" was created but is non-functional for the following reason(s):
+Couldn't find port object "s_axihub_rd_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "s_axihub_wr_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/S_AXIMM" was created but is non-functional for the following reason(s):
+Couldn't find port object "s_aximm_rd_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "s_aximm_wr_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/TRACE_IN_0" was created but is non-functional for the following reason(s):
+Couldn't find port object "trace_socket0" for protocol analyzer port "AXIS_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_hub/TRACE_IN_1" was created but is non-functional for the following reason(s):
+Couldn't find port object "trace_socket1" for protocol analyzer port "AXIS_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_mon0/S_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "axilite_rd_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "axilite_wr_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_mon0/TRACE_OUT_0" was created but is non-functional for the following reason(s):
+Couldn't find port object "wr_trace_socket" for protocol analyzer port "AXIS_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//VitisRegion/System_DPA/dpa_mon0/TRACE_OUT_1" was created but is non-functional for the following reason(s):
+Couldn't find port object "rd_trace_socket" for protocol analyzer port "AXIS_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S00_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S00_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S00_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S01_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S01_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S01_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S02_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S02_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S02_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S03_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S03_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S03_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S04_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S04_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S04_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S05_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S05_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S05_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S06_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S06_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S06_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S07_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S07_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S07_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//cips_noc/S08_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S08_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S08_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M00_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "M00_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M00_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M01_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "M01_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M01_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M02_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "M02_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M02_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/M03_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "M03_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "M03_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//icn_ctrl/S00_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S00_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S00_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+WARNING: [Wavedata 42-559] Protocol instance "/ext_platform_part_wrapper_sim_wrapper/ext_platform_part_wrapper_i/ext_platform_part_i//noc_ddr4/S00_AXI" was created but is non-functional for the following reason(s):
+Couldn't find port object "S00_AXI_tlm_aximm_read_socket" for protocol analyzer port "AXIMM_READ_SOCKET".
+Couldn't find port object "S00_AXI_tlm_aximm_write_socket" for protocol analyzer port "AXIMM_WRITE_SOCKET".
+Protocol instance has no valid analyzer.  Please configure the protocol instance again.
+
+Time resolution is 1 ps
+WARNING: [Simtcl 6-25] Warning: Both '-runall' and '-tclbatch' were specified. The '-runall' was ignored
+source ext_platform_part_wrapper_sim_wrapper.tcl
+## set curr_wave [current_wave_config]
+## if { [string length $curr_wave] == 0 } {
+##   if { [llength [get_objects]] > 0} {
+##     add_wave /
+##     set_property needs_save false [current_wave_config]
+##   } else {
+##      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+##   }
+## }
+## if { [file exists vitis_params.tcl] } {
+##   source vitis_params.tcl
+## }
+## if { [info exists ::env(USER_PRE_SIM_SCRIPT)] } {
+##   if { [catch {source $::env(USER_PRE_SIM_SCRIPT)} msg] } {
+##     puts $msg
+##   }
+## }
+## if { [info exists ::env(VITIS_WAVEFORM)] } {
+##   if { [file exists $::env(VITIS_WAVEFORM)] == 1} {
+##     open_wave_config $::env(VITIS_WAVEFORM)
+##   }
+## }
+WARNING: Simulation object /ext_platform_part_wrapper/ext_platform_part_i/VitisRegion/vadd_1/m_axi_gmem0 was not found in the design.
+## if { [file exists pre_sim_tool_scripts.tcl] } {
+##   source pre_sim_tool_scripts.tcl
+## }
+### if { [file exists preprocess_profile.tcl] } {
+###   if { [catch {source -notrace preprocess_profile.tcl} msg] } {
+###     puts $msg 
+###   }
+### }
+## puts "We are running simulator for infinite time. Added some default signals in the waveform. You can pause simulation and add signals and then resume the simulaion again."
+We are running simulator for infinite time. Added some default signals in the waveform. You can pause simulation and add signals and then resume the simulaion again.
+## puts ""
+
+## puts "Stopping at breakpoint in simulator also stops the host code execution"
+Stopping at breakpoint in simulator also stops the host code execution
+## puts ""
+
+## if { [info exists ::env(VITIS_LAUNCH_WAVEFORM_GUI) ] } {
+##   run 1ns
+## } else {
+##   run all
+## }
+connect to ./qemu-rport-_pl@0
