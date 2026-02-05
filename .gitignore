@@ -20,5 +20,3 @@ versal_linux/my_foe_flx/project-spec/hw-description/extracted/
 versal_linux/my_foe_flx/project-spec/hw-description/*.pdi
 versal_linux/my_foe_flx/project-spec/hw-description/*.isd
 
-# Other
-fixed_qemu_args.txt

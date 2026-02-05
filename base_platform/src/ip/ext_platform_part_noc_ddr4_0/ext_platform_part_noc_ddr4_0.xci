@@ -75,7 +75,7 @@
         "HBM_START_PHY": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "HBM_MEM_BACKDOOR_WRITE": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "HBM_MEM_INIT_MODE": [ { "value": "INIT_0", "resolve_type": "user", "usage": "all" } ],
-        "HBM_MEM_INIT_FILE": [ { "value": "no_file_loaded", "resolve_type": "user", "usage": "all", "data_type": "file_mem" } ],
+        "HBM_MEM_INIT_FILE": [ { "value": "no_file_loaded", "resolve_type": "user", "enabled": false, "usage": "all", "data_type": "file_mem" } ],
         "HBM_REF_CLK_SELECTION": [ { "value": "Internal", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "HBM_EXT_REFCLK_IO_STANDARD": [ { "value": "NONE", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "HBM_CHNL_EN_0": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
@@ -918,7 +918,7 @@
           "parameters": {
             "ADDR_WIDTH": [ { "value": "64", "resolve_type": "user", "format": "long", "is_static_object": false } ],
             "INI_STRATEGY": [ { "value": "auto", "resolve_type": "user", "is_static_object": false } ],
-            "COMPUTED_STRATEGY": [ { "value": "load", "value_src": "default_prop", "resolve_type": "generated", "is_static_object": false } ],
+            "COMPUTED_STRATEGY": [ { "value": "load", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "R_TRAFFIC_CLASS": [ { "value": "BEST_EFFORT", "resolve_type": "user", "is_static_object": false } ],
             "W_TRAFFIC_CLASS": [ { "value": "BEST_EFFORT", "resolve_type": "user", "is_static_object": false } ],
             "R_LATENCY": [ { "value": "300", "resolve_type": "user", "is_static_object": false } ],
@@ -933,9 +933,9 @@
             "WRITE_BUFFER_SIZE": [ { "value": "80", "resolve_type": "user", "is_static_object": false } ],
             "REMAPS": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
             "NOC_PARAMS": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
-            "MY_CATEGORY": [ { "value": "pl", "resolve_type": "generated", "is_static_object": false } ],
+            "MY_CATEGORY": [ { "value": "pl", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "CATEGORY": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
-            "PHYSICAL_CHANNEL": [ { "value": "", "resolve_type": "generated", "is_static_object": false } ]
+            "PHYSICAL_CHANNEL": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ]
           },
           "port_maps": {
             "INTERNOC": [ { "physical_name": "S00_INI_internoc" } ]
@@ -946,9 +946,9 @@
           "abstraction_type": "xilinx.com:interface:diff_clock_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "CAN_DEBUG": [ { "value": "false", "resolve_type": "generated", "format": "bool", "is_static_object": false } ],
-            "FREQ_HZ": [ { "value": "200000000", "value_src": "user_prop", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
-            "BOARD.ASSOCIATED_PARAM": [ { "value": "sys_clk0_BOARD_INTERFACE", "value_src": "user", "resolve_type": "generated", "is_static_object": false } ]
+            "CAN_DEBUG": [ { "value": "false", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "200000000", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "BOARD.ASSOCIATED_PARAM": [ { "value": "sys_clk0_BOARD_INTERFACE", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ]
           },
           "port_maps": {
             "CLK_P": [ { "physical_name": "sys_clk0_clk_p" } ],
@@ -960,11 +960,11 @@
           "abstraction_type": "xilinx.com:interface:ddr4_rtl:1.0",
           "mode": "master",
           "parameters": {
-            "CAN_DEBUG": [ { "value": "false", "resolve_type": "generated", "format": "bool", "is_static_object": false } ],
+            "CAN_DEBUG": [ { "value": "false", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_static_object": false } ],
             "TIMEPERIOD_PS": [ { "value": "1250", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "MEMORY_TYPE": [ { "value": "COMPONENTS", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "MEMORY_PART": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
-            "DATA_WIDTH": [ { "value": "8", "value_permission": "bd", "resolve_type": "user", "format": "long", "is_static_object": false } ],
+            "DATA_WIDTH": [ { "value": "8", "resolve_type": "user", "format": "long", "is_static_object": false } ],
             "CS_ENABLED": [ { "value": "true", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_static_object": false } ],
             "DATA_MASK_ENABLED": [ { "value": "true", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_static_object": false } ],
             "SLOT": [ { "value": "Single", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
@@ -981,9 +981,9 @@
             "NOC_ID": [ { "value": "-1", "resolve_type": "user", "is_static_object": false } ],
             "APERTURES": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
             "NOC_PARAMS": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
-            "MY_CATEGORY": [ { "value": "pl", "resolve_type": "generated", "is_static_object": false } ],
+            "MY_CATEGORY": [ { "value": "pl", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "CATEGORY": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
-            "BOARD.ASSOCIATED_PARAM": [ { "value": "CH0_DDR4_0_BOARD_INTERFACE", "value_src": "user", "resolve_type": "generated", "is_static_object": false } ]
+            "BOARD.ASSOCIATED_PARAM": [ { "value": "CH0_DDR4_0_BOARD_INTERFACE", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ]
           },
           "port_maps": {
             "DQ": [ { "physical_name": "CH0_DDR4_0_dq" } ],
@@ -1005,5 +1005,5 @@
       }
     }
   },
-  "checksum": "8dd2d4df"
+  "checksum": "421b760d"
 }

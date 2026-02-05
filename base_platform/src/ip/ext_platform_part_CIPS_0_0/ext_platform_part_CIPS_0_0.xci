@@ -9,8 +9,8 @@
     "parameters": {
       "component_parameters": {
         "PS_PMC_CONFIG": [ { "value": [
-            "BOOT_MODE Custom CLOCK_MODE Custom DDR_MEMORY_MODE Custom IO_CONFIG_MODE Custom PMC_CRP_PL0_REF_CTRL_FREQMHZ 99.999992 PMC_QSPI_FBCLK {{ENABLE 1} {IO {PMC_MIO 6}}} PMC_QSPI_PERIPHERAL_ENABLE 0 PMC_SD0 {{CD_ENABLE 0} {CD_IO {PMC_MIO 24}} {POW_ENABLE 0} {POW_IO {PMC_MIO 17}} {RESET_ENABLE 0} {RESET_IO {PMC_MIO 17}} {WP_ENABLE 0} {WP_IO {PMC_MIO 25}}} PMC_SD0_PERIPHERAL {{CLK_100_SDR_OTAP_DLY 0x00} {CLK_200_SDR_OTAP_DLY 0x00} {CLK_50_DDR_ITAP_DLY 0x00} {CLK_50_DDR_OTAP_DLY 0x00} {CLK_50_SDR_ITAP_DLY 0x00} {CLK_50_SDR_OTAP_DLY 0x00} {ENABLE 0} {IO {PMC_MIO 13 .. 25}}} PMC_SD0_SLOT_TYPE {SD 2.0} PMC_SD1_PERIPHERAL {{CLK_100_SDR_OTAP_DLY 0x3} {CLK_200_SDR_OTAP_DLY 0x2} {CLK_50_DDR_ITAP_DLY 0x36} {CLK_50_DDR_OTAP_DLY 0x3} {CLK_50_SDR_ITAP_DLY 0x2C} {CLK_50_SDR_OTAP_DLY 0x4} {ENABLE 1} {IO {PMC_MIO 26 .. 36}}} PMC_SD1_SLOT_TYPE {SD 3.0} PMC_SMAP_PERIPHERAL {{ENABLE 0} {IO {32 Bit}}} PMC_USE_PMC_NOC_AXI0 1 PMC_USE_PMC_NOC_AXI1 1 PS_ENET0_MDIO {{ENABLE 1} {IO {PS_MIO 24 .. 25}}} PS_ENET0_PERIPH",
-            "ERAL {{ENABLE 1} {IO {PS_MIO 0 .. 11}}} PS_GEN_IPI0_ENABLE 1 PS_GEN_IPI0_MASTER A72 PS_GEN_IPI1_ENABLE 1 PS_GEN_IPI1_MASTER A72 PS_GEN_IPI2_ENABLE 1 PS_GEN_IPI2_MASTER A72 PS_GEN_IPI3_ENABLE 1 PS_GEN_IPI3_MASTER A72 PS_GEN_IPI4_ENABLE 1 PS_GEN_IPI4_MASTER A72 PS_GEN_IPI5_ENABLE 1 PS_GEN_IPI5_MASTER A72 PS_GEN_IPI6_ENABLE 1 PS_GEN_IPI6_MASTER A72 PS_IRQ_USAGE {{CH0 1} {CH1 0} {CH10 0} {CH11 0} {CH12 0} {CH13 0} {CH14 0} {CH15 0} {CH2 0} {CH3 0} {CH4 0} {CH5 0} {CH6 0} {CH7 0} {CH8 0} {CH9 0}} PS_NUM_FABRIC_RESETS 1 PS_PL_CONNECTIVITY_MODE Custom PS_TTC0_PERIPHERAL_ENABLE 1 PS_UART0_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 42 .. 43}}} PS_USE_FPD_AXI_NOC0 1 PS_USE_FPD_AXI_NOC1 1 PS_USE_FPD_CCI_NOC 1 PS_USE_M_AXI_FPD 1 PS_USE_NOC_LPD_AXI0 1 PS_USE_PMCPL_CLK0 1 PS_USE_PMCPL_CLK1 0 PS_USE_PMCPL_CLK2 0 PS_USE_PMCPL_CLK3 0 SLR1_PMC_CRP_HSM0_REF_CTRL_FREQMHZ 100 SMON_ALARMS Set_Alarms_On SMON_ENABLE_TEMP_AVERAGING 0 SMON_TEMP_AVERAGING_SAMPLES 0"
+            "BOOT_MODE Custom CLOCK_MODE Custom DDR_MEMORY_MODE Custom DESIGN_MODE 1 IO_CONFIG_MODE Custom PMC_CRP_PL0_REF_CTRL_FREQMHZ 99.999992 PMC_QSPI_FBCLK {{ENABLE 1} {IO {PMC_MIO 6}}} PMC_QSPI_PERIPHERAL_ENABLE 0 PMC_SD0 {{CD_ENABLE 0} {CD_IO {PMC_MIO 24}} {POW_ENABLE 0} {POW_IO {PMC_MIO 17}} {RESET_ENABLE 0} {RESET_IO {PMC_MIO 17}} {WP_ENABLE 0} {WP_IO {PMC_MIO 25}}} PMC_SD0_PERIPHERAL {{CLK_100_SDR_OTAP_DLY 0x00} {CLK_200_SDR_OTAP_DLY 0x00} {CLK_50_DDR_ITAP_DLY 0x00} {CLK_50_DDR_OTAP_DLY 0x00} {CLK_50_SDR_ITAP_DLY 0x00} {CLK_50_SDR_OTAP_DLY 0x00} {ENABLE 0} {IO {PMC_MIO 13 .. 25}}} PMC_SD0_SLOT_TYPE {SD 2.0} PMC_SD1_PERIPHERAL {{CLK_100_SDR_OTAP_DLY 0x3} {CLK_200_SDR_OTAP_DLY 0x2} {CLK_50_DDR_ITAP_DLY 0x36} {CLK_50_DDR_OTAP_DLY 0x3} {CLK_50_SDR_ITAP_DLY 0x2C} {CLK_50_SDR_OTAP_DLY 0x4} {ENABLE 1} {IO {PMC_MIO 26 .. 36}}} PMC_SD1_SLOT_TYPE {SD 3.0} PMC_SMAP_PERIPHERAL {{ENABLE 0} {IO {32 Bit}}} PMC_USE_PMC_NOC_AXI0 1 PMC_USE_PMC_NOC_AXI1 1 PS_BOARD_INTERFACE Custom PS_ENET0_MDIO {{ENABLE 1}",
+            " {IO {PS_MIO 24 .. 25}}} PS_ENET0_PERIPHERAL {{ENABLE 1} {IO {PS_MIO 0 .. 11}}} PS_GEN_IPI0_ENABLE 1 PS_GEN_IPI0_MASTER A72 PS_GEN_IPI1_ENABLE 1 PS_GEN_IPI1_MASTER A72 PS_GEN_IPI2_ENABLE 1 PS_GEN_IPI2_MASTER A72 PS_GEN_IPI3_ENABLE 1 PS_GEN_IPI3_MASTER A72 PS_GEN_IPI4_ENABLE 1 PS_GEN_IPI4_MASTER A72 PS_GEN_IPI5_ENABLE 1 PS_GEN_IPI5_MASTER A72 PS_GEN_IPI6_ENABLE 1 PS_GEN_IPI6_MASTER A72 PS_IRQ_USAGE {{CH0 1} {CH1 0} {CH10 0} {CH11 0} {CH12 0} {CH13 0} {CH14 0} {CH15 0} {CH2 0} {CH3 0} {CH4 0} {CH5 0} {CH6 0} {CH7 0} {CH8 0} {CH9 0}} PS_NUM_FABRIC_RESETS 1 PS_PL_CONNECTIVITY_MODE Custom PS_TTC0_PERIPHERAL_ENABLE 1 PS_UART0_PERIPHERAL {{ENABLE 1} {IO {PMC_MIO 42 .. 43}}} PS_USE_FPD_AXI_NOC0 1 PS_USE_FPD_AXI_NOC1 1 PS_USE_FPD_CCI_NOC 1 PS_USE_M_AXI_FPD 1 PS_USE_NOC_LPD_AXI0 1 PS_USE_PMCPL_CLK0 1 PS_USE_PMCPL_CLK1 0 PS_USE_PMCPL_CLK2 0 PS_USE_PMCPL_CLK3 0 SLR1_PMC_CRP_HSM0_REF_CTRL_FREQMHZ 100 SMON_ALARMS Set_Alarms_On SMON_ENABLE_TEMP_AVERAGING 0 SMON_TEMP_AVERAGING_SAMPLES 0"
             ], "value_src": "user", "resolve_type": "user", "vlnv": "xilinx.com:ip:pspmc:1.4", "usage": "all", "data_type": "structured_tcldict" } ],
         "PS_PMC_CONFIG_INTERNAL": [ { "value": [
             "AURORA_LINE_RATE_GPBS 12.5 BOOT_MODE Custom BOOT_SECONDARY_PCIE_ENABLE 0 CLOCK_MODE Custom COHERENCY_MODE Custom CPM_PCIE0_MODES None CPM_PCIE0_PL_LINK_CAP_MAX_LINK_WIDTH X4 CPM_PCIE0_TANDEM None CPM_PCIE1_MODES None CPM_PCIE1_PL_LINK_CAP_MAX_LINK_WIDTH X4 DDR_MEMORY_MODE Custom DEBUG_MODE Custom DESIGN_MODE 1 DEVICE_INTEGRITY_MODE Custom DIS_AUTO_POL_CHECK 0 GT_REFCLK_MHZ 156.25 INIT_CLK_MHZ 125 INV_POLARITY 0 IO_CONFIG_MODE Custom JTAG_USERCODE 0x0 OT_EAM_RESP SRST PCIE_APERTURES_DUAL_ENABLE 0 PCIE_APERTURES_SINGLE_ENABLE 0 PERFORMANCE_MODE Custom PL_SEM_GPIO_ENABLE 0 PMC_ALT_REF_CLK_FREQMHZ 33.333 PMC_BANK_0_IO_STANDARD LVCMOS1.8 PMC_BANK_1_IO_STANDARD LVCMOS1.8 PMC_CIPS_MODE ADVANCE PMC_CLKMON0_CONFIG {{BASE 10000} {BASE_CLK_SRC REF_CLK} {CLKA_FREQ 1000} {CLKA_SEL REF_CLK} {ENABLE 0} {INTR 0} {THRESHOLD_L 0} {THRESHOLD_U 0}} PMC_CLKMON0_CONFIG_1 {{BASE 10000} {BASE_CLK_SRC REF_CLK} {CLKA_FREQ 1000} {CLKA_SEL REF_CLK} {ENABLE 0} {INTR 0} {THRESHOLD_L 0} {THRESHOLD_U 0}} PMC_CLKMON0",
@@ -2005,7 +2005,7 @@
       },
       "address_spaces": {
         "M_AXI_FPD": {
-          "range": "0x4FF5C000000",
+          "range": "0x100000000000",
           "width": "44",
           "apertures": {
             "M_AXI_FPD:APERTURE_0": [ { "offset": "0xA4000000", "range": "0x1C000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2014,7 +2014,7 @@
           }
         },
         "FPD_CCI_NOC_0": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "FPD_CCI_NOC_0:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2027,7 +2027,7 @@
           }
         },
         "FPD_CCI_NOC_1": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "FPD_CCI_NOC_1:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2040,7 +2040,7 @@
           }
         },
         "FPD_CCI_NOC_2": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "FPD_CCI_NOC_2:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2053,7 +2053,7 @@
           }
         },
         "FPD_CCI_NOC_3": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "FPD_CCI_NOC_3:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2066,7 +2066,7 @@
           }
         },
         "FPD_AXI_NOC_0": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "FPD_AXI_NOC_0:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2079,7 +2079,7 @@
           }
         },
         "FPD_AXI_NOC_1": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "FPD_AXI_NOC_1:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2092,7 +2092,7 @@
           }
         },
         "LPD_AXI_NOC_0": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "LPD_AXI_NOC_0:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2104,7 +2104,7 @@
           }
         },
         "PMC_NOC_AXI_0": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "PMC_NOC_AXI_0:APERTURE_0": [ { "offset": "0x00000000", "range": "0x80000000", "display_name": "APERTURE_0", "description": "register" } ],
@@ -2117,7 +2117,7 @@
           }
         },
         "PMC_NOC_AXI_1": {
-          "range": "0x100000000000",
+          "range": "0x10000000000000000",
           "width": "64",
           "apertures": {
             "PMC_NOC_AXI_1:APERTURE_0": [ { "offset": "0x00000000000", "range": "0x100000000000", "display_name": "APERTURE_0", "description": "register" } ]
@@ -2126,5 +2126,5 @@
       }
     }
   },
-  "checksum": "65b84248"
+  "checksum": "14d601a8"
 }
