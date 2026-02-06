@@ -45,7 +45,7 @@ extern "C" {
         out  (output) --> Output Vector
         size (input)  --> Size of Vector
 */
-void vadd(unsigned int* in, unsigned int* out, int size) {
+void vadd_pl(unsigned int* in, unsigned int* out, int size) {
     // Define internal streams
     static hls::stream<unsigned int> inStream("input_stream");
     static hls::stream<unsigned int> outStream("output_stream");
@@ -56,8 +56,8 @@ void vadd(unsigned int* in, unsigned int* out, int size) {
 
     // AXI Master Interfaces (Data)
     // Mapping both to gmem0. You can separate them (e.g., out to gmem1) if you have multiple banks.
-    #pragma HLS INTERFACE m_axi port = in bundle = gmem0
-    #pragma HLS INTERFACE m_axi port = out bundle = gmem0
+    #pragma HLS INTERFACE m_axi port = in bundle = gmem0 depth=4096
+    #pragma HLS INTERFACE m_axi port = out bundle = gmem0 depth=4096
 
     // AXI Lite Interfaces (Control) - REQUIRED for Vitis/XRT
     #pragma HLS INTERFACE s_axilite port = in bundle = control
