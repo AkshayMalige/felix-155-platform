@@ -20,11 +20,29 @@ To generate the final `.xpfm` platform file, use the provided Python script with
 vitis -s generate_platform.py
 ```
 
-## Usage
-Once the XPFM is generated, you can build applications, such as a `vadd` template project, targeting this platform.
+## Extracting PDI Components
+You can also extract the necessary binary components from the base XSA:
+```bash
+mkdir -p pdi_files
+vivado -mode tcl
+# Within the Vivado TCL shell:
+hsi::open_hw_design base_platform/top_hw_hwemu.xsa
+bootgen -arch versal -dump base_platform/top_hw_hw_emu_presynth.pdi -dump_dir pdi_files
+```
 
+## Running QEMU Simulation
+Follow these steps to perform a hardware/software co-simulation:
 
+1.  **Prepare the Emulation Environment**:
+    Navigate to the `xcvp_qemu` directory and ensure all required files are present. You will need to copy the following components:
+    - **From `pdi_files/`**: `pmc_cdo.0.0.bin`
+    - **From `versal_linux/my_foe_flx/sw/boot/`**: `plm.elf`, `versal-qemu-multiarch-ps.dtb`, and `versal-qemu-multiarch-pmc.dtb`
+    - **From the root directory**: `BOOT_bh.bin` and `qemu_sd.img`
 
-export COSIM_MACHINE_PATH=unix:/tmp/tmp_dir/qemu-rport-_amba@0_cosim@0
+2.  **Execute Simulation**:
+    ```bash
+    cd xcvp_qemu
+    make run_qemu
+    ```
 
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}
+The `make run_qemu` command automates the startup of the PMC and PS QEMU instances and synchronizes them with the XSIM hardware simulation.
