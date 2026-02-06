@@ -9310,7 +9310,7 @@ config Init-manager-sysvinit
 endchoice
 endmenu
 
-source /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfsconfigs/Kconfig.user
+source /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfsconfigs/Kconfig.user
 
 menu "PetaLinux RootFS Settings"
 config ADD_EXTRA_USERS

@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+ image {
+     { type = bootimage, file = base_platform/top_hw_hw_emu_presynth.pdi }
+ }
+}

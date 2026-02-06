@@ -285,6 +285,9 @@
               "SMON_ENABLE_TEMP_AVERAGING 0",
               "SMON_TEMP_AVERAGING_SAMPLES 0"
             ]
+          },
+          "PS_PMC_CONFIG_APPLIED": {
+            "value": "1"
           }
         },
         "interface_ports": {
@@ -1791,11 +1794,11 @@
       "clk_wizard_0_clk_out1": {
         "ports": [
           "clk_wizard_0/clk_out1",
-          "CIPS_0/m_axi_fpd_aclk",
           "cips_noc/aclk0",
           "icn_ctrl/aclk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "axi_intc_0/s_axi_aclk"
+          "axi_intc_0/s_axi_aclk",
+          "CIPS_0/m_axi_fpd_aclk"
         ]
       },
       "clk_wizard_0_clk_out2": {

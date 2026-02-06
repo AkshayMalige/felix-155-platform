@@ -1,14 +1,14 @@
-2026-02-03 18:02:11,190 - [DEBUG] Using xsct from : /tools/Xilinx/PetaLinux/components/xsct/bin/xsct
-2026-02-03 18:02:11,190 - [INFO] Getting Platform info from HW file
-2026-02-03 18:02:11,190 - [DEBUG] Using the soc_family specified by user:versal
-2026-02-03 18:02:11,243 - [DEBUG] Hardware Configuration:
-2026-02-03 18:02:11,243 - [DEBUG] MACHINE     = "None"
-2026-02-03 18:02:11,243 - [DEBUG] DEVICE_ID   = "xcvp1552"
-2026-02-03 18:02:11,243 - [DEBUG] SOC_FAMILY  = "versal"
-2026-02-03 18:02:11,243 - [DEBUG] SOC_VARIANT = "premium"
-2026-02-03 18:02:11,243 - [INFO] Silentconfig project
-2026-02-03 18:02:11,243 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/config conf /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig
-2026-02-03 18:02:11,251 - [DEBUG] *
+2026-02-06 14:21:59,534 - [DEBUG] Using xsct from : /tools/Xilinx/PetaLinux/components/xsct/bin/xsct
+2026-02-06 14:21:59,534 - [INFO] Getting Platform info from HW file
+2026-02-06 14:21:59,534 - [DEBUG] Using the soc_family specified by user:versal
+2026-02-06 14:21:59,586 - [DEBUG] Hardware Configuration:
+2026-02-06 14:21:59,586 - [DEBUG] MACHINE     = "None"
+2026-02-06 14:21:59,586 - [DEBUG] DEVICE_ID   = "xcvp1552"
+2026-02-06 14:21:59,586 - [DEBUG] SOC_FAMILY  = "versal"
+2026-02-06 14:21:59,586 - [DEBUG] SOC_VARIANT = "premium"
+2026-02-06 14:21:59,586 - [INFO] Silentconfig project
+2026-02-06 14:21:59,586 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/config conf /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig
+2026-02-06 14:21:59,592 - [DEBUG] *
 * PetaLinux System Configuration
 *
 VERSAL Configuration (SYSTEM_VERSAL) [Y/?] y
@@ -254,11 +254,11 @@ Enable Buildtools Extended (YOCTO_BUILDTOOLS_EXTENDED) [Y/n/?]
 *
 user layer 0 (USER_LAYER_0) [] 
 #
-# configuration written to /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/config
+# configuration written to /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/config
 #
-2026-02-03 18:02:11,293 - [INFO] Silentconfig rootfs
-2026-02-03 18:02:11,293 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfs_config conf /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfsconfigs/Kconfig
-2026-02-03 18:02:11,307 - [DEBUG] *
+2026-02-06 14:21:59,634 - [INFO] Silentconfig rootfs
+2026-02-06 14:21:59,634 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfs_config conf /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfsconfigs/Kconfig
+2026-02-06 14:21:59,650 - [DEBUG] *
 * Configuration
 *
 *
@@ -3715,9 +3715,9 @@ Create new Groups (CREATE_NEW_GROUPS) [aie;]
 Add Users to Groups (ADD_USERS_TO_GROUPS) [petalinux:audio,video,aie,input;] 
 Add Users to Sudo users (ADD_USERS_TO_SUDOERS) [petalinux] 
 #
-# configuration written to /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfs_config
+# configuration written to /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/rootfs_config
 #
-2026-02-03 18:02:11,312 - [INFO] Generating configuration files
-2026-02-03 18:02:11,329 - [DEBUG] No multilibs enabled.
-2026-02-03 18:02:11,329 - [DEBUG] No multilibs enabled.
-2026-02-03 18:02:11,351 - [DEBUG] Shutting down bitbake
+2026-02-06 14:21:59,656 - [INFO] Generating configuration files
+2026-02-06 14:21:59,673 - [DEBUG] No multilibs enabled.
+2026-02-06 14:21:59,673 - [DEBUG] No multilibs enabled.
+2026-02-06 14:21:59,695 - [DEBUG] Shutting down bitbake

@@ -918,7 +918,7 @@
           "parameters": {
             "ADDR_WIDTH": [ { "value": "64", "resolve_type": "user", "format": "long", "is_static_object": false } ],
             "INI_STRATEGY": [ { "value": "auto", "resolve_type": "user", "is_static_object": false } ],
-            "COMPUTED_STRATEGY": [ { "value": "load", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "COMPUTED_STRATEGY": [ { "value": "load", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "R_TRAFFIC_CLASS": [ { "value": "BEST_EFFORT", "resolve_type": "user", "is_static_object": false } ],
             "W_TRAFFIC_CLASS": [ { "value": "BEST_EFFORT", "resolve_type": "user", "is_static_object": false } ],
             "R_LATENCY": [ { "value": "300", "resolve_type": "user", "is_static_object": false } ],
@@ -1005,5 +1005,5 @@
       }
     }
   },
-  "checksum": "421b760d"
+  "checksum": "5f71cc43"
 }

@@ -9,7 +9,7 @@ config SYSTEM_VERSAL
         bool "VERSAL Configuration"
         help
           VERSAL Configuration for the project.
-          All these config options will be in /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/config
+          All these config options will be in /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/config
 
 config SUBSYSTEM_VARIANT_VERSALPREMIUM
         bool
@@ -21,4 +21,4 @@ config SUBSYSTEM_DISTRO_PETALINUX
         default y
         help
 
-source /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig.main
+source /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig.main

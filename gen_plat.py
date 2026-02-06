@@ -8,93 +8,26 @@ import shutil
 # ==============================================================================
 ROOT_DIR = os.getcwd()
 PLATFORM_NAME = "xcvp1552_custom_flx"
-WORKSPACE_DIR = os.path.join(ROOT_DIR, "vitis_workspace")
+WORKSPACE_DIR = os.path.join(ROOT_DIR, "my_workspace")
 
-# Input XSA Files
+# Input XSA Files (Ensure these are exported with Emulation enabled in Vivado!)
 HW_XSA  = os.path.join(ROOT_DIR, "base_platform/top_hw_hwemu.xsa")
 EMU_XSA = os.path.join(ROOT_DIR, "base_platform/top_hw_hwemu.xsa")
 
-# Software Components
+# Software Components (Linux Common Image or PetaLinux output)
+# Note: For Versal, Vitis extracts PLM/Bootloaders from the XSA usually.
+# You only strictly need the OS components here.
 BOOT_DIR = os.path.join(ROOT_DIR, "versal_linux/my_foe_flx/sw/boot")
 SD_DIR   = os.path.join(ROOT_DIR, "versal_linux/my_foe_flx/sw/sd_dir")
 
-# Emulation Assets
-QEMU_DATA_DIR = os.path.join(ROOT_DIR, "base_platform/qemu_data")
-
-# Output Args Files (We will write these dynamically)
-PS_ARGS_FILE  = os.path.join(ROOT_DIR, "ps_args.txt")
-PMC_ARGS_FILE = os.path.join(ROOT_DIR, "pmc_args.txt")
-
 # ==============================================================================
-# Validation
+# 1. Clean Workspace
 # ==============================================================================
-if not os.path.exists(QEMU_DATA_DIR):
-    print(f"[ERROR] QEMU Data directory missing: {QEMU_DATA_DIR}")
-    sys.exit(1)
+if os.path.exists(WORKSPACE_DIR):
+    print(f"[INFO] Cleaning workspace: {WORKSPACE_DIR}")
+    # Optional: Backup instead of delete if you prefer
+    # shutil.rmtree(WORKSPACE_DIR) 
 
-# ==============================================================================
-# Dynamic Args File Generation (THE FIX)
-# 1. We embed the ABSOLUTE PATH to QEMU_DATA_DIR to avoid <qemu_data> errors.
-# 2. We add -machine-path /tmp to fix the socket communication deadlock.
-# ==============================================================================
-print("[INFO] Generating QEMU Argument files with absolute paths...")
-
-# 1. PS (AArch64) Arguments
-ps_args_content = f"""-M
-arm-generic-fdt
--display
-none
--machine-path
-/tmp
--serial
-null
--serial
-null
--serial
-mon:stdio
--serial
-null
--boot
-mode=5
--hw-dtb
-{os.path.join(QEMU_DATA_DIR, 'versal-qemu-multiarch-ps.dtb')}
-"""
-
-# 2. PMC (MicroBlaze) Arguments
-pmc_args_content = f"""-M
-microblaze-fdt
--display
-none
--machine-path
-/tmp
--device
-loader,addr=0xf0000000,data=0xba020004,data-len=4
--device
-loader,addr=0xf0000004,data=0xb800fffc,data-len=4
--device
-loader,file={os.path.join(QEMU_DATA_DIR, 'pmc_cdo.0.0.bin')},addr=0xf2000000
--device
-loader,file={os.path.join(QEMU_DATA_DIR, 'BOOT_bh.bin')},addr=0xf201e000,force-raw=on
--device
-loader,file={os.path.join(QEMU_DATA_DIR, 'plm.elf')}
--hw-dtb
-{os.path.join(QEMU_DATA_DIR, 'versal-qemu-multiarch-pmc.dtb')}
--device
-loader,addr=0xF1110624,data=0x0,data-len=4
--device
-loader,addr=0xF1110620,data=0x1,data-len=4
-"""
-
-# Write files to disk
-with open(PS_ARGS_FILE, "w") as f:
-    f.write(ps_args_content)
-
-with open(PMC_ARGS_FILE, "w") as f:
-    f.write(pmc_args_content)
-
-# ==============================================================================
-# Platform Creation
-# ==============================================================================
 print(f"[INFO] Initializing Vitis in: {WORKSPACE_DIR}")
 client = vitis.create_client()
 client.set_workspace(path=WORKSPACE_DIR)
@@ -105,9 +38,14 @@ try:
 except:
     pass
 
+# ==============================================================================
+# 2. Create Platform Component (The Fix)
+# ==============================================================================
 print(f"[INFO] Creating Platform Component...")
-# NOTE: Set generate_dtb=False because we are providing our own custom DTB via args
-# If True, Vitis might override our PS DTB with a generic one.
+
+# CRITICAL CHANGE: generate_dtb=True
+# Vitis will parse the XSA and create a 'system.dtb' that includes your
+# custom IP addresses and the ZOCL driver node required for XRT.
 platform = client.create_platform_component(
     name=PLATFORM_NAME,
     hw_design=HW_XSA,
@@ -115,26 +53,41 @@ platform = client.create_platform_component(
     os="linux",
     cpu="psv_cortexa72",
     domain_name="linux_psv_cortexa72",
-    generate_dtb=False, 
-    advanced_options=client.create_advanced_options_dict(dt_zocl="1", dt_overlay="0")
+    generate_dtb=True,  # <--- THIS IS KEY for Custom Boards
+    advanced_options=client.create_advanced_options_dict(
+        dt_zocl="1",    # Generate Device Tree node for XRT
+        dt_overlay="0"  # 0 = Flat tree (simpler for QEMU), 1 = Overlay
+    )
 )
 
 domain = platform.get_domain(name="linux_psv_cortexa72")
 
+# ==============================================================================
+# 3. Configure Domain
+# ==============================================================================
 print("[INFO] Configuring Linux Domain...")
+
+# Set the software artifacts
 domain.set_boot_dir(path=BOOT_DIR)
 if os.path.exists(SD_DIR) and os.listdir(SD_DIR):
     domain.set_sd_dir(path=SD_DIR)
 
+# DO NOT manually set set_qemu_args unless you have a very specific non-standard requirement.
+# Vitis will auto-generate qemu_args.txt pointing to the correct dtb and boot mode.
+
+print("[INFO] Generating BIF...")
 domain.generate_bif()
-
-# Register files (still good practice for packaging)
-domain.set_qemu_data(path=QEMU_DATA_DIR)
-
-# Apply the files we just generated
-domain.set_qemu_args(qemu_option="PS", path=PS_ARGS_FILE)
-domain.set_qemu_args(qemu_option="PMU", path=PMC_ARGS_FILE)
 
 print("[INFO] Building Platform...")
 platform.build()
+
 print(f"[SUCCESS] Platform built at: {WORKSPACE_DIR}/{PLATFORM_NAME}/export/{PLATFORM_NAME}")
+print("----------------------------------------------------------------")
+print("NEXT STEPS FOR HW_EMU:")
+print("1. Do NOT rely on the script for the '/tmp' socket fix.")
+print("2. Instead, before running 'vitis' or 'launch_hw_emu', run this in your terminal:")
+print("   export TMPDIR=/tmp")
+print("   (This shortens the socket paths without breaking the generated QEMU args)")
+print("----------------------------------------------------------------")
+
+

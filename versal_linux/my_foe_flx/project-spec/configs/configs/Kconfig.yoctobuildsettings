@@ -27,13 +27,13 @@ endmenu
 endif
 
 if !SUBSYSTEM_DISTRO_PETALINUX
-source /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig.yoctomachinesettings
+source /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig.yoctomachinesettings
 endif
 
 if SUBSYSTEM_DISTRO_PETALINUX
 menu "Yocto Settings"
 
-source /home/synthara/VersalPrjs/felix/AM_felix2101/felix-155-xpfm/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig.yoctomachinesettings
+source /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/versal_linux/my_foe_flx/project-spec/configs/configs/Kconfig.yoctomachinesettings
 
 if SUBSYSTEM_SDT_FLOW
 config MC_PLNX_IMAGES_LOCATION
