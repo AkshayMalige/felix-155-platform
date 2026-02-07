@@ -1,0 +1,370 @@
+ynthara@synthara-Super-Server:~/VersalPrjs/felix/AM_felix0602/felix-155-platform/xcvp_qemu$ make run_qemu 
+rm -f -rf /tmp/tmp_dir; \
+mkdir /tmp/tmp_dir; \
+./run_qemu.sh; \
+sleep 5; \
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}; \
+cd /home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/base_platform/project_build/flx_base_platform.sim/sim_1/behav/xsim && ./simulate.sh
+INFO: Starting MicroBlaze (PMC) QEMU...
+INFO: Starting AArch64 (PS) QEMU...
+INFO: QEMU started. Connect your XSIM now.
+qemu-system-microblazeel: info: QEMU waiting for connection on: disconnected:unix:qemu-rport-_ps_pmc_rp@0,server=on
+qemu-system-aarch64: warning: hub 0 is not connected to host network
+QEMU 8.2.7 monitor - type 'help' for more information
+(qemu) xsim ext_platform_part_wrapper_sim_wrapper_behav -key {Behavioral:sim_1:Functional:ext_platform_part_wrapper_sim_wrapper} -tclbatch ext_platform_part_wrapper_sim_wrapper.tcl -protoinst protoinst_files/bd_5156.protoinst -protoinst protoinst_files/bd_152a.protoinst -protoinst protoinst_files/bd_a217.protoinst -protoinst protoinst_files/bd_4673.protoinst -protoinst protoinst_files/ext_platform_part.protoinst -protoinst protoinst_files/xlnoc.protoinst -log simulate.log -gui
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Sat Feb  7 16:37:22 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+start_gui
+[13423.549]****************************************
+[13424.038]Xilinx Versal Platform Loader and Manager 
+[13424.093]Release 2025.1   May 14 2025  -  12:33:16
+[13424.232]Platform Version: v0.0 PMC: v0.0, PS: v0.0
+[13424.293]BOOTMODE: 0x5, MULTIBOOT: 0xF0000000
+[13424.341]****************************************
+[13437.411]Non Secure Boot
+[13459.502]PLM Initialization Time 
+[13459.651]***********Boot PDI Load: Started***********
+[13461.775]Loading PDI from SD1
+[13461.842]Monolithic/Master Device
+[17942.993]4483.193 ms: PDI initialization time
+[17943.160]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+[17943.261]---Loading Partition#: 0x1, Id: 0xC
+[18027.045] 83.675 ms for Partition#: 0x1, Size: 8496 Bytes
+[18029.972]---Loading Partition#: 0x2, Id: 0x0
+[18049.837] 17.574 ms for Partition#: 0x2, Size: 62480 Bytes
+PSM Firmware version: 2025.1 [Build: May 14 2025 12:33:16 ] 
+[18100.535]+++Loading Image#: 0x2, Name: fpd, Id: 0x0420C003
+[18103.462]---Loading Partition#: 0x3, Id: 0x8
+[18625.633] 519.882 ms for Partition#: 0x3, Size: 4336 Bytes
+[18731.786]+++Loading Image#: 0x3, Name: apu_subsystem, Id: 0x1C000000
+[18735.357]---Loading Partition#: 0x4, Id: 0x0
+[18746.982] 9.316 ms for Partition#: 0x4, Size: 29168 Bytes
+[18750.175]---Loading Partition#: 0x5, Id: 0x0
+[18766.491] 14.047 ms for Partition#: 0x5, Size: 49152 Bytes
+[18769.686]---Loading Partition#: 0x6, Id: 0x0
+[18778.698] 6.758 ms for Partition#: 0x6, Size: 18512 Bytes
+[18781.848]---Loading Partition#: 0x7, Id: 0x0
+[19091.392] 307.288 ms for Partition#: 0x7, Size: 1168624 Bytes
+[19126.562]***********Boot PDI Load: Done***********
+[19129.308]3319137304.575 ms: ROM Time
+[19131.224]Total PLM Boot Time 
+INFO:    BL31: Early console setup
+INFO:    Successfully initialized runtime console
+NOTICE:  TF-A running on QEMU 0
+INFO:    BL31: GET_HANDOFF_PARAMS call success=0
+INFO:    BL31: PLM to TF-A handover success 0
+NOTICE:  BL31: Secure code at 0x0
+NOTICE:  BL31: Non secure code at 0x8000000
+NOTICE:  BL31: v2.12.0(debug):v1.1-15211-gdd3512287-dirty
+NOTICE:  BL31: Built : 07:04:54, Apr 24 2025
+INFO:    GICv3 without legacy support detected.
+INFO:    ARM GICv3 driver initialized in EL3
+INFO:    Maximum SPI INTID supported: 223
+INFO:    BL31: Initializing runtime services
+INFO:    Indicates counter frequency 0Hz setting to 100000000Hz
+INFO:    BL31: cortex_a72: CPU workaround for erratum 859971 was applied
+INFO:    BL31: cortex_a72: CPU workaround for erratum 1319367 was applied
+INFO:    BL31: cortex_a72: CPU workaround for CVE 2018_3639 was applied
+INFO:    BL31: cortex_a72: CPU workaround for CVE 2022_23960 was applied
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x8000000
+INFO:    SPSR = 0x3c9
+
+
+U-Boot 2025.01-ga09d2660433d (May 16 2025 - 14:46:32 +0000)
+
+CPU:   Versal
+Silicon: v0
+Chip:  v0
+Model: Xilinx Versal
+DRAM:  2 GiB (effective 8 GiB)
+EL Level:	EL2
+Multiboot:	0
+Core:  29 devices, 15 uclasses, devicetree: board
+MMC:   mmc@f1050000: 0
+Loading Environment from FAT... *** Error - No Valid Environment Area found
+*** Warning - bad env area, using default environment
+
+In:    serial@ff000000
+Out:   serial@ff000000
+Err:   serial@ff000000
+Bootmode: SD_MODE1
+Net:   No ethernet found.
+
+Hit any key to stop autoboot:  0 
+switch to partitions #0, OK
+mmc0 is current device
+Scanning mmc 0:1...
+Found U-Boot script /boot.scr
+3833 bytes read in 13 ms (287.1 KiB/s)
+## Executing script at 20000000
+Trying to load boot images from mmc0
+26659328 bytes read in 6713 ms (3.8 MiB/s)
+29157 bytes read in 20 ms (1.4 MiB/s)
+## Flattened Device Tree blob at 00001000
+   Booting using the fdt blob at 0x001000
+Working FDT set to 1000
+   Loading Device Tree to 0000000077e91000, end 0000000077e9b1e4 ... OK
+Working FDT set to 77e91000
+No RNG device
+
+Starting kernel ...
+
+INFO:    Indicates counter frequency 0Hz setting to 100000000Hz
+[   15.925538] printk: legacy console [ttyAMA0] enabled
+[   15.926425] printk: legacy bootconsole [pl11] disabled
+[   16.194511] of-fpga-region fpga-region: FPGA Region probed
+[   16.341232] macb ff0c0000.ethernet: GEM doesn't support hardware ptp.
+[   16.391892] macb ff0c0000.ethernet eth0: Cadence GEM rev 0x00020118 at 0xff0c0000 irq 28 (52:54:00:12:34:56)
+[   16.420447] rtc_zynqmp f12a0000.rtc: registered as rtc0
+[   16.421565] rtc_zynqmp f12a0000.rtc: setting system clock to 2026-02-07T21:38:09 UTC (1770500289)
+[   16.428668] cpufreq: cpufreq_online: CPU0: Running at unlisted initial frequency: 1649999 KHz, changing to: 1650000 KHz
+[   16.565378] of_cfs_init
+[   16.566039] of_cfs_init: OK
+[   16.567292] clk: Not disabling unused clocks
+[   16.567533] PM: genpd: Disabling unused power domains
+[   18.552556] ALSA device list:
+[   18.552927]   No soundcards found.
+[   18.610177] mmc0: SDHCI controller on f1050000.mmc [f1050000.mmc] using ADMA 64-bit
+[   18.612806] Waiting for root device /dev/mmcblk0p2...
+[   19.104099] mmc0: new high speed SDHC card at address 4567
+[   19.108395] mmcblk0: mmc0:4567 QEMU! 8.00 GiB
+[   19.118189]  mmcblk0: p1 p2
+[   19.274630] EXT4-fs (mmcblk0p2): mounted filesystem de8d705e-a550-488a-aa35-01bc40cb9005 r/w with ordered data mode. Quota mode: none.
+[   19.275613] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[   19.278195] devtmpfs: mounted
+[   19.342183] Freeing unused kernel memory: 3136K
+[   19.343245] Run /sbin/init as init process
+[   21.956555] systemd[1]: systemd 255.17^ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK +XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[   21.958562] systemd[1]: Detected architecture arm64.
+
+Welcome to PetaLinux 2025.1+release-S05180137 (scarthgap)!
+
+[   22.038646] systemd[1]: Hostname set to <myfoeflx>.
+[   22.066444] systemd[1]: Initializing machine ID from random generator.
+[   24.051100] systemd[1]: Queued start job for default target Multi-User System.
+[   24.110778] systemd[1]: Created slice Slice /system/getty.
+[  OK  ] Created slice Slice /system/getty.
+[   24.117204] systemd[1]: Created slice Slice /system/modprobe.
+[  OK  ] Created slice Slice /system/modprobe.
+[   24.121167] systemd[1]: Created slice Slice /system/serial-getty.
+[  OK  ] Created slice Slice /system/serial-getty.
+[   24.124528] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[   24.127644] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+[   24.129472] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
+[   24.131235] systemd[1]: Reached target Path Units.
+[  OK  ] Reached target Path Units.
+[   24.132382] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[   24.133604] systemd[1]: Reached target Slice Units.
+[  OK  ] Reached target Slice Units.
+[   24.134862] systemd[1]: Reached target Swaps.
+[  OK  ] Reached target Swaps.
+[   24.201002] systemd[1]: Listening on RPCbind Server Activation Socket.
+[  OK  ] Listening on RPCbind Server Activation Socket.
+[   24.203800] systemd[1]: Reached target RPC Port Mapper.
+[  OK  ] Reached target RPC Port Mapper.
+[   24.207349] systemd[1]: Listening on Syslog Socket.
+[  OK  ] Listening on Syslog Socket.
+[   24.210025] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[   24.215111] systemd[1]: Listening on Journal Audit Socket.
+[  OK  ] Listening on Journal Audit Socket.
+[   24.217604] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[   24.220425] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[   24.223292] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[   24.251839] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[   24.254515] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[   24.256671] systemd[1]: Listening on User Database Manager Socket.
+[  OK  ] Listening on User Database Manager Socket.
+[   24.311379] systemd[1]: Mounting Huge Pages File System...
+         Mounting Huge Pages File System...
+[   24.323619] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting POSIX Message Queue File System...
+[   24.350166] systemd[1]: Mounting Kernel Debug File System...
+         Mounting Kernel Debug File System...
+[   24.352571] systemd[1]: Kernel Trace File System was skipped because of an unmet condition check (ConditionPathExists=/sys/kernel/tracing).
+[   24.398470] systemd[1]: Mounting Temporary Directory /tmp...
+         Mounting Temporary Directory /tmp...
+[   24.456646] systemd[1]: Starting Create List of Static Device Nodes...
+         Starting Create List of Static Device Nodes...
+[   24.531337] systemd[1]: Starting Load Kernel Module configfs...
+         Starting Load Kernel Module configfs...
+[   24.583289] systemd[1]: Starting Load Kernel Module dm_mod...
+         Starting Load Kernel Module dm_mod...
+[   24.647179] systemd[1]: Starting Load Kernel Module drm...
+         Starting Load Kernel Module drm...
+[   24.691527] systemd[1]: Starting Load Kernel Module fuse...
+         Starting Load Kernel Module fuse...
+[   24.735532] systemd[1]: Starting Load Kernel Module loop...
+         Starting Load Kernel Module loop...
+[   24.831521] systemd[1]: Starting RPC Bind...
+         Starting RPC Bind...
+[   24.832827] systemd[1]: File System Check on Root Device was skipped because of an unmet condition check (ConditionPathIsReadWrite=!/).
+[   24.963457] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[   25.027612] systemd[1]: Starting Load Kernel Modules...
+         Starting Load Kernel Modules...
+[   25.098049] systemd[1]: Starting Generate network units from Kernel command line...
+         Starting Generate network units from Kernel command line...
+[   25.151194] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[   25.238733] systemd[1]: Starting Coldplug All udev Devices...
+         Starting Coldplug All udev Devices...
+[   25.482254] systemd[1]: Mounted Huge Pages File System.
+[  OK  ] Mounted Huge Pages File System.
+[   25.488935] systemd[1]: Mounted POSIX Message Queue File System.
+[  OK  ] Mounted POSIX Message Queue File System.
+[   25.494457] systemd[1]: Mounted Kernel Debug File System.
+[  OK  ] Mounted Kernel Debug File System.
+[   25.499826] systemd[1]: Mounted Temporary Directory /tmp.
+[  OK  ] Mounted Temporary Directory /tmp.
+[   25.516237] systemd[1]: Finished Create List of Static Device Nodes.
+[  OK  ] Finished Create List of Static Device Nodes.
+[   25.560028] systemd[1]: modprobe@configfs.service: Deactivated successfully.
+[   25.589428] systemd[1]: Finished Load Kernel Module configfs.
+[  OK  ] Finished Load Kernel Module configfs.
+[   25.702667] systemd[1]: modprobe@dm_mod.service: Deactivated successfully.
+[   25.738378] systemd[1]: Finished Load Kernel Module dm_mod.
+[  OK  ] Finished Load Kernel Module dm_mod.
+[   25.745278] systemd[1]: modprobe@drm.service: Deactivated successfully.
+[   25.767556] systemd[1]: Finished Load Kernel Module drm.
+[  OK  ] Finished Load Kernel Module drm.
+[   25.803488] systemd[1]: Started RPC Bind.
+[  OK  ] Started RPC Bind.
+[   25.819807] systemd[1]: modprobe@fuse.service: Deactivated successfully.
+[   25.830494] systemd[1]: Finished Load Kernel Module fuse.
+[  OK  ] Finished Load Kernel Module fuse.
+[   25.840557] systemd[1]: modprobe@loop.service: Deactivated successfully.
+[   25.854508] systemd[1]: Finished Load Kernel Module loop.
+[  OK  ] Finished Load Kernel Module loop.
+[   25.938369] EXT4-fs (mmcblk0p2): re-mounted de8d705e-a550-488a-aa35-01bc40cb9005 r/w. Quota mode: none.
+[   25.966596] systemd[1]: Finished Generate network units from Kernel command line.
+[  OK  ] Finished Generate network units from Kernel command line.
+[   25.975602] systemd[1]: Finished Remount Root and Kernel File Systems.
+[  OK  ] Finished Remount Root and Kernel File Systems.
+[   25.999434] systemd[1]: FUSE Control File System was skipped because of an unmet condition check (ConditionPathExists=/sys/fs/fuse/connections).
+[   26.105420] systemd-journald[200]: Collecting audit messages is enabled.
+[   26.118903] systemd[1]: Mounting Kernel Configuration File System...
+         Mounting Kernel Configuration File System...
+[   26.191890] systemd[1]: Rebuild Hardware Database was skipped because no trigger condition checks were met.
+[   26.199239] systemd[1]: Repartition Root Disk was skipped because no trigger condition checks were met.
+[   26.201983] openvswitch: Open vSwitch switching datapath
+[   26.306097] systemd[1]: Starting Create Static Device Nodes in /dev gracefully...
+         Starting Create Static Device Nodes in /dev gracefully...
+[   26.318793] systemd[1]: Finished Load Kernel Modules.
+[  OK  ] Finished Load Kernel Modules.
+[   26.386799] systemd[1]: Mounting NFSD configuration filesystem...
+         Mounting NFSD configuration filesystem...
+[   26.415453] systemd[1]: Starting Apply Kernel Variables...
+         Starting Apply Kernel Variables...
+[   26.434165] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+[  OK  ] Mounted Kernel Configuration File System.
+         Starting Flush Journal to Persistent Storage...
+[  OK  ] Mounted NFSD configuration filesystem.
+[  OK  ] Finished Apply Kernel Variables.
+[  OK  ] Finished Create Static Device Nodes in /dev gracefully.
+         Starting Create System Users...
+[  OK  ] Finished Flush Journal to Persistent Storage.
+         Starting User Database Manager...
+[  OK  ] Started User Database Manager.
+[  OK  ] Finished Create System Users.
+         Starting Create Static Device Nodes in /dev...
+[  OK  ] Finished Create Static Device Nodes in /dev.
+[  OK  ] Reached target Preparation for Local File Systems.
+         Mounting /var/volatile...
+         Starting Rule-based Manager for Device Events and Files...
+[  OK  ] Mounted /var/volatile.
+         Starting Load/Save OS Random Seed...
+[  OK  ] Reached target Local File Systems.
+         Starting Rebuild Dynamic Linker Cache...
+         Starting Create System Files and Directories...
+[  OK  ] Finished Coldplug All udev Devices.
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+[  OK  ] Finished Create System Files and Directories.
+         Starting Rebuild Journal Catalog...
+         Starting Network Name Resolution...
+         Starting Network Time Synchronization...
+         Starting Record System Boot/Shutdown in UTMP...
+[  OK  ] Finished Load/Save OS Random Seed.
+[  OK  ] Finished Record System Boot/Shutdown in UTMP.
+[  OK  ] Finished Rebuild Journal Catalog.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Started Network Name Resolution.
+[   46.405086] zocl-drm zyxclmm_drm: error -ENXIO: IRQ index 32 not found
+[  OK  ] Finished Rebuild Dynamic Linker Cache.
+[  OK  ] Created slice Slice /system/systemd-fsck.
+[  OK  ] Reached target Host and Network Name Lookups.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+         Starting Run pending postinsts...
+         Starting File System Check on /dev/mmcblk0p1...
+         Starting Update is Completed...
+         Starting Virtual Console Setup...
+[  OK  ] Finished Update is Completed.
+[  *** ] (1 of 3) A start job is running for…tual Console Setup (9s / no limit)
+[  OK  ] Finished File System Check on /dev/mmcblk0p1.
+         Mounting /run/media/boot-mmcblk0p1...
+[  OK  ] Finished Virtual Console Setup.
+[  OK  ] Mounted /run/media/boot-mmcblk0p1.
+[  OK  ] Finished Run pending postinsts.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target Timer Units.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+         Starting sshd.socket...
+[  OK  ] Listening on sshd.socket.
+[  OK  ] Reached target Socket Units.
+[  OK  ] Reached target Basic System.
+[  OK  ] Started Kernel Logging Service.
+[  OK  ] Started System Logging Service.
+         Starting D-Bus System Message Bus...
+         Starting IPv6 Packet Filtering Framework...
+         Starting IPv4 Packet Filtering Framework...
+         Starting User Login Management...
+         Starting OpenSSH Key Generation...
+[  OK  ] Finished IPv6 Packet Filtering Framework.
+[  OK  ] Finished IPv4 Packet Filtering Framework.
+[  OK  ] Reached target Preparation for Network.
+         Starting Network Configuration...
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Started User Login Management.
+[  OK  ] Started Network Configuration.
+[  OK  ] Reached target Network.
+         Starting Permit User Sessions...
+         Starting Target Communication Framework agent...
+[  OK  ] Finished Permit User Sessions.
+[  OK  ] Started Getty on tty1.
+[  OK  ] Started Serial Getty on ttyAMA0.
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Started Target Communication Framework agent.
+[  OK  ] Reached target Multi-User System.
+         Starting Record Runlevel Change in UTMP...
+[  OK  ] Finished Record Runlevel Change in UTMP.
+[  OK  ] Finished OpenSSH Key Generation.
+
+********************************************************************************************
+The PetaLinux source code and images provided/generated are for demonstration purposes only.
+Please refer to https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/2741928025/Moving+from+PetaLinux+to+Production+Deployment
+for more details.
+********************************************************************************************
+PetaLinux 2025.1+release-S05180137 myfoeflx ttyAMA0
+
+myfoeflx login: petalinux
+
