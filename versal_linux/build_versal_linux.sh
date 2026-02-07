@@ -106,27 +106,26 @@ MAIN_CFG="project-spec/configs/config"
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --enable libsysfs
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --enable sysfsutils-dev
 
-# --- RootFS: SSH/Networking (Standard for Vitis) ---
+# --- RootFS: SSH/Networking ---
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --enable openssh
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --enable openssh-ssh
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --enable openssh-sshd
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --enable openssh-sftp-server
 
-# --- RootFS: Disable Dropbear (Conflict with OpenSSH) ---
+# --- RootFS: Disable Dropbear ---
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --disable dropbear
 "$CFG_TOOL" --file "$ROOTFS_CFG" --keep-case --disable packagegroup-core-ssh-dropbear
 
-# --- Main Config: Boot & RootFS Settings (User Requested) ---
+# --- Main Config: Boot & RootFS Settings ---
 # 1. Image Packaging Configuration
 "$CFG_TOOL" --file "$MAIN_CFG" --keep-case --disable CONFIG_SUBSYSTEM_ROOTFS_INITRAMFS
 "$CFG_TOOL" --file "$MAIN_CFG" --keep-case --enable CONFIG_SUBSYSTEM_ROOTFS_EXT4
 "$CFG_TOOL" --file "$MAIN_CFG" --set-str CONFIG_SUBSYSTEM_RFS_FORMATS "ext4 tar.gz"
-"$CFG_TOOL" --file "$MAIN_CFG" --set-str CONFIG_SUBSYSTEM_SDROOT_DEV "/dev/mmcblk1p2"
+"$CFG_TOOL" --file "$MAIN_CFG" --set-str CONFIG_SUBSYSTEM_SDROOT_DEV "/dev/mmcblk0p2"
 
 # 2. DTG Settings > Kernel Bootargs
 "$CFG_TOOL" --file "$MAIN_CFG" --keep-case --disable CONFIG_SUBSYSTEM_BOOTARGS_AUTO
-"$CFG_TOOL" --file "$MAIN_CFG" --set-str CONFIG_SUBSYSTEM_USER_CMDLINE "console=ttyAMA0 earlycon=pl011,mmio32,0xFF010000,115200n8 clk_ignore_unused root=/dev/mmcblk1p2 rw rootwait cma=512M"
-
+"$CFG_TOOL" --file "$MAIN_CFG" --set-str CONFIG_SUBSYSTEM_USER_CMDLINE "console=ttyAMA0 earlycon=pl011,mmio32,0xFF010000,115200n8 clk_ignore_unused root=/dev/mmcblk0p2 rw rootwait cma=512M cpuidle.off=1"
 # --- Main Config: General ---
 "$CFG_TOOL" --file "$MAIN_CFG" --keep-case --enable CONFIG_YOCTO_BUILDTOOLS_EXTENDED
 
@@ -137,7 +136,6 @@ petalinux-config -c rootfs --silentconfig
 
 if [ "$SKIP_BUILD" -eq 1 ]; then
     echo "Configuration complete. Skipping build as requested."
-    echo "You can now run 'petalinux-build' manually inside $PROJECT_NAME"
     exit 0
 fi
 
@@ -150,9 +148,37 @@ echo "[5/6] Building SDK (Sysroot) for Host App Compilation..."
 petalinux-build --sdk
 petalinux-package --sysroot
 
-# ================= 6. Package Boot Image =================
+# ================= 6. Package Boot & SD Image =================
 echo "[6/6] Packaging BOOT.BIN..."
 petalinux-package --boot --plm --psmfw --u-boot --dtb --force
+
+echo "[6b/6] Generating QEMU SD Card Image (WIC)..."
+
+
+# 1. Generate the partitioned WIC image
+petalinux-package --wic --bootfiles "BOOT.BIN boot.scr Image system.dtb" --rootfs-file images/linux/rootfs.ext4
+
+WIC_FILE="images/linux/petalinux-sdimage.wic"
+ROOTFS_FILE="images/linux/rootfs.ext4"
+FINAL_QEMU_IMG="/home/synthara/VersalPrjs/felix/AM_felix0602/felix-155-platform/xcvp_qemu/qemu_boot.img"
+
+# 2. Resize to 8GB (Next power of 2 for QEMU)
+echo "Resizing image to 8GB..."
+qemu-img resize "$WIC_FILE" 8G
+
+# 3. FIX: Manually Inject RootFS (Solves "No Init Found" Kernel Panic)
+echo "Injecting RootFS into Partition 2..."
+# Detect offset of Partition 2 (usually p2 or wic2)
+START_SECTOR=$(fdisk -l "$WIC_FILE" | grep -E "wic2|p2" | awk '{print $2}')
+if [ -z "$START_SECTOR" ]; then
+    START_SECTOR=4194312 # Fallback to standard Versal offset
+fi
+echo "Writing RootFS at sector $START_SECTOR..."
+dd if="$ROOTFS_FILE" of="$WIC_FILE" bs=512 seek="$START_SECTOR" conv=notrunc status=none
+
+# 4. Deploy to QEMU directory
+echo "Deploying fixed image to $FINAL_QEMU_IMG..."
+cp "$WIC_FILE" "$FINAL_QEMU_IMG"
 
 # ================= 7. Organize Artifacts =================
 echo "[7/7] Organizing Artifacts into 'sw' directory..."
@@ -162,19 +188,18 @@ mkdir -p "$SW_DIR/sd_dir"
 mkdir -p "$SW_DIR/sw_comp"
 
 echo "Copying boot files..."
-# sw/boot: Copy all .elf, .img, .dtb files
 find images/linux/ -maxdepth 1 -name "*.elf" -exec cp {} "$SW_DIR/boot/" \;
 find images/linux/ -maxdepth 1 -name "*.img" -exec cp {} "$SW_DIR/boot/" \;
 find images/linux/ -maxdepth 1 -name "*.dtb" -exec cp {} "$SW_DIR/boot/" \;
 
 echo "Copying SD directory files..."
-# sw/sd_dir: Copy boot.scr
 if [ -f "images/linux/boot.scr" ]; then
     cp images/linux/boot.scr "$SW_DIR/sd_dir/"
 fi
+# Also copy our fixed image here for reference
+cp "$WIC_FILE" "$SW_DIR/sd_dir/qemu_sd.img"
 
 echo "Copying SW components..."
-# sw/sw_comp: Copy 'Image', 'rootfs.ext4'
 if [ -f "images/linux/Image" ]; then
     cp images/linux/Image "$SW_DIR/sw_comp/"
 fi
@@ -182,7 +207,6 @@ if [ -f "images/linux/rootfs.ext4" ]; then
     cp images/linux/rootfs.ext4 "$SW_DIR/sw_comp/"
 fi
 
-# sw/sw_comp: Copy environment-setup-*, version-*, and install sysroot
 if [ -d "images/linux/sdk" ]; then
     find images/linux/sdk/ -maxdepth 1 -name "environment-setup-*" -exec cp {} "$SW_DIR/sw_comp/" \;
     find images/linux/sdk/ -maxdepth 1 -name "version-*" -exec cp {} "$SW_DIR/sw_comp/" \;
@@ -195,9 +219,5 @@ fi
 
 echo "=========================================="
 echo " Build Success!"
-echo "=========================================="
-echo "Artifacts organized in: $SW_DIR"
-echo "  - Boot:        $SW_DIR/boot"
-echo "  - SD Dir:      $SW_DIR/sd_dir"
-echo "  - SW Comp:     $SW_DIR/sw_comp"
+echo " QEMU Image Ready: $FINAL_QEMU_IMG"
 echo "=========================================="

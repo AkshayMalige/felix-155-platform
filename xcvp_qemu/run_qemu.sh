@@ -2,7 +2,7 @@
 
 PS_DTB="versal-qemu-multiarch-ps.dtb"
 PMC_DTB="versal-qemu-multiarch-pmc.dtb"
-SD_IMG="qemu_sd.img"
+SD_IMG="qemu_boot.img"
 PMC_CDO="pmc_cdo.0.0.bin"
 BOOT_BH="BOOT_bh.bin"
 PLM="plm.elf"

@@ -63,3 +63,11 @@ Follow these steps to perform a hardware/software co-simulation:
     ```
 
 The `make run_qemu` command automates the startup of the PMC and PS QEMU instances and synchronizes them with the XSIM hardware simulation.
+
+
+add_force {/ext_platform_part_wrapper_sim_wrapper/sys_clk0_0_clk_p} -radix hex {0 0ns} {1 2500ps} -repeat_every 5000ps
+
+add_force {/ext_platform_part_wrapper_sim_wrapper/sys_clk0_0_clk_n} -radix hex {1 0ns} {0 2500ps} -repeat_every 5000ps
+
+qemu-img resize qemu_sd.img 8G
+
