@@ -23,11 +23,15 @@ vitis -s generate_platform.py
 ## Extracting PDI Components
 You can also extract the necessary binary components from the base XSA:
 ```bash
+cd xcvp_qemu
 mkdir -p pdi_files
 vivado -mode tcl
 # Within the Vivado TCL shell:
-hsi::open_hw_design base_platform/top_hw_hwemu.xsa
+hsi::open_hw_design ../base_platform/top_hw_hwemu.xsa
 bootgen -arch versal -dump base_platform/top_hw_hw_emu_presynth.pdi -dump_dir pdi_files
+bootgen -arch versal -image bootgen.bif -w -o BOOT.BIN
+cp pdi_files/* .
+cp ../base_platform/extracted/ext_platform_part_wrapper_0/pdi_files/gen_files/plm.elf
 ```
 
 ## Running QEMU Simulation
