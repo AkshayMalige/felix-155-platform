@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# /home/synthara/VersalPrjs/tmp/check/vadd/build/hw_emu/package/package/sim/behav_waveform/xsim
 PS_DTB="versal-qemu-multiarch-ps.dtb"
 PMC_DTB="versal-qemu-multiarch-pmc.dtb"
 SD_IMG="qemu_boot.img"
