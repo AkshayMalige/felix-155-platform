@@ -75,7 +75,7 @@
         "HBM_START_PHY": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "HBM_MEM_BACKDOOR_WRITE": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "HBM_MEM_INIT_MODE": [ { "value": "INIT_0", "resolve_type": "user", "usage": "all" } ],
-        "HBM_MEM_INIT_FILE": [ { "value": "no_file_loaded", "resolve_type": "user", "enabled": false, "usage": "all", "data_type": "file_mem" } ],
+        "HBM_MEM_INIT_FILE": [ { "value": "no_file_loaded", "resolve_type": "user", "usage": "all", "data_type": "file_mem" } ],
         "HBM_REF_CLK_SELECTION": [ { "value": "Internal", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "HBM_EXT_REFCLK_IO_STANDARD": [ { "value": "NONE", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "HBM_CHNL_EN_0": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
@@ -2394,7 +2394,7 @@
           "parameters": {
             "ADDR_WIDTH": [ { "value": "64", "resolve_type": "user", "format": "long", "is_static_object": false } ],
             "INI_STRATEGY": [ { "value": "auto", "resolve_type": "user", "is_static_object": false } ],
-            "COMPUTED_STRATEGY": [ { "value": "load", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "COMPUTED_STRATEGY": [ { "value": "load", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "PHYSICAL_LOC": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
             "REGION": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
             "VC_MAP": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
@@ -2417,7 +2417,7 @@
           "parameters": {
             "ADDR_WIDTH": [ { "value": "64", "resolve_type": "user", "format": "long", "is_static_object": false } ],
             "INI_STRATEGY": [ { "value": "auto", "resolve_type": "user", "is_static_object": false } ],
-            "COMPUTED_STRATEGY": [ { "value": "load", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "COMPUTED_STRATEGY": [ { "value": "load", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "PHYSICAL_LOC": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
             "REGION": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
             "VC_MAP": [ { "value": "", "resolve_type": "user", "is_static_object": false } ],
@@ -2436,5 +2436,5 @@
       }
     }
   },
-  "checksum": "7da41735"
+  "checksum": "b58ba091"
 }
