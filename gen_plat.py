@@ -4,16 +4,15 @@ import shutil
 
 # --- Configuration ---
 ROOT_DIR = os.path.abspath(os.getcwd())
-PLATFORM_NAME = "xcvp1552_custom_flx"
+PLATFORM_NAME = "xcvp1552_custom_felix"
 WORKSPACE_DIR = os.path.join(ROOT_DIR, "my_workspace")
 
 # Points to the XSA (Hardware Export)
-HW_XSA = os.path.join(ROOT_DIR, "base_platform/project_build/top_hw_hw_emu.xsa")
+HW_XSA = os.path.join(ROOT_DIR, "base_platform/top_hw_hwemu.xsa")
 
 # Points to the 'sw' folder created by the shell script
-# Note: Ensure these paths match where build_versal_linux.sh saved them!
-BOOT_DIR = os.path.join(ROOT_DIR, "petalinux_project_name/sw/boot")
-IMAGE_DIR = os.path.join(ROOT_DIR, "petalinux_project_name/sw/image")
+BOOT_DIR = os.path.join(ROOT_DIR, "versal_linux/my_foe_flx/sw/boot")
+IMAGE_DIR = os.path.join(ROOT_DIR, "versal_linux/my_foe_flx/sw/image")
 
 # Clean previous workspace
 if os.path.exists(WORKSPACE_DIR):
@@ -29,23 +28,20 @@ platform = client.create_platform_component(
     os="linux",
     cpu="psv_cortexa72",
     domain_name="xrt_linux",
-    generate_dtb=True, # Let Vitis generate the standard DTB flow if needed, or set False if using PetaLinux system.dtb exclusively
+    generate_dtb=True, 
     advanced_options=client.create_advanced_options_dict(dt_zocl="1")
 )
 
 domain = platform.get_domain(name="xrt_linux")
 
 # --- Set Artifact Directories ---
-# Vitis picks up plm.elf, psmfw.elf, u-boot.elf, etc from here
 domain.set_boot_dir(path=BOOT_DIR)
-# Vitis picks up Image, rootfs.ext4, boot.scr from here
 domain.set_sd_dir(path=IMAGE_DIR)
 
-# --- CRITICAL: QEMU Arguments for Custom Boards ---
-# We must explicitly tell QEMU where to find the bootloaders and DTBs
-# because it doesn't know the memory map of your custom XCVP1552.
-qemu_args = f"""
--M microblaze-fdt 
+# --- CRITICAL FIX: Write qemu_args.txt to the Boot Directory ---
+# instead of calling a non-existent API function.
+
+qemu_args_content = f"""-M microblaze-fdt 
 -device loader,file={BOOT_DIR}/plm.elf,cpu-num=0 
 -device loader,file={BOOT_DIR}/psmfw.elf,cpu-num=0 
 -device loader,file={BOOT_DIR}/pmc_cdo.bin,cpu-num=0 
@@ -56,10 +52,16 @@ qemu_args = f"""
 -dtb {BOOT_DIR}/versal-qemu-multiarch-ps.dtb 
 """
 
-# Apply the arguments to the platform
-status = platform.add_qemu_args(qemu_args)
+# Flatten newlines to spaces for the file (safer for parsing)
+qemu_args_content = qemu_args_content.replace('\n', ' ')
 
-# Build
+# Write the file
+qemu_args_path = os.path.join(BOOT_DIR, "qemu_args.txt")
+print(f"Writing QEMU arguments to: {qemu_args_path}")
+with open(qemu_args_path, "w") as f:
+    f.write(qemu_args_content)
+
+# --- Build ---
 print("Building platform...")
 platform.build()
 
