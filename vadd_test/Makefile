@@ -48,7 +48,7 @@ $(LINKED_XSA): xo
 	v++ -l -t $(TARGET) \
 		--platform $(PLATFORM) \
 		--config $(LINK_CFG) \
-		hls_src/vadd.xo \
+		hls_src/vadd_pl.xo \
 		-o $(LINKED_XSA)
 
 link: $(LINKED_XSA)
@@ -63,7 +63,6 @@ package: link host
         --package.sd_file $(HOST_DIR)/host_app \
         --package.sd_file $(LINK_CFG) \
         --package.boot_mode sd \
-        --package.bif boot.bif \
 		--package.image_format ext4 \
         --package.ext4_fat32_size 2048 \
         -o $(PACKAGE_DIR)/$(XCLBIN)

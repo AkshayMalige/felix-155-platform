@@ -1,73 +1,153 @@
-# Felix-155 Platform Generation
+# Felix-155 Platform
 
-This project provides the infrastructure to generate a custom XPFM platform for the Versal XCVP1552 FPGA.
+Custom Vitis extensible platform for the Versal XCVP1552 (`xcvp1552-vsva3340-2MHP-e-S`) with hardware emulation support.
 
-## Base Platform
-The hardware XSA for this platform is defined by the `base_platform/top_hw_hwemu.xsa` file.
+**Tools:** Vivado / Vitis / PetaLinux 2025.2
 
-## Linux Image Generation
-To build the Linux components, navigate to the `versal_linux` directory and run:
+## Project Structure
+
+```
+felix-155-platform/
+├── base_platform/          # Vivado hardware design and XSA exports
+│   ├── src/                # Block design, constraints, IP cores
+│   ├── top_hw_hwemu.xsa    # Combined HW + HW-emu XSA
+│   └── recreate_project.tcl
+├── versal_linux/           # PetaLinux build environment
+│   ├── build_versal_linux.sh
+│   └── my_foe_flx/        # PetaLinux project (generated)
+│       └── sw/             # Organized boot/image artifacts
+├── gen_plat.py             # Vitis platform generation script
+├── my_workspace/           # Vitis workspace (generated)
+│   └── xcvp1552_custom_felix/
+│       └── export/         # Final .xpfm platform
+├── vadd_test/              # Vector-add test application
+│   ├── hls_src/            # HLS kernel (vadd_pl)
+│   ├── host/               # XRT host application
+│   ├── Makefile            # Full build: xo -> link -> package
+│   └── package/            # v++ package output (launch_hw_emu.sh)
+└── xcvp_qemu/              # Standalone QEMU launcher (for base XSA testing)
+```
+
+## Build Flow
+
+The full flow has four stages. Each stage depends on the previous one.
+
+### 1. Hardware (Vivado)
+
+The base platform block design targets the XCVP1552 with CIPS, NOC, DDR4, clock wizard, and AXI interrupt controller. The XSA is exported with both hardware and hardware-emulation variants.
+
 ```bash
+# To recreate the Vivado project from scratch:
+cd base_platform
+vivado -source recreate_project.tcl
+```
+
+Output: `base_platform/top_hw_hwemu.xsa`
+
+### 2. Linux (PetaLinux)
+
+Builds the kernel, rootfs, boot firmware, and QEMU DTBs from the hardware XSA.
+
+```bash
+cd versal_linux
 ./build_versal_linux.sh -n my_foe_flx -x ../base_platform/top_hw_hwemu.xsa
 ```
 
-## Software Components
-After building Linux, the resulting files are organized in the `versal_linux/my_foe_flx/sw` folder.
+This script:
+- Creates a PetaLinux project from the Versal template
+- Imports the XSA hardware description
+- Enables XRT, OpenAMP, and AI Engine drivers
+- Configures ext4 rootfs with SD boot
+- Builds the system, SDK, and sysroot
+- Organizes artifacts into `my_foe_flx/sw/boot/` and `my_foe_flx/sw/image/`
 
-## Platform Generation (XPFM)
-To generate the final `.xpfm` platform file, use the provided Python script with Vitis:
+Output: `versal_linux/my_foe_flx/sw/` (boot ELFs, DTBs, kernel, rootfs)
+
+### 3. Platform (Vitis)
+
+Generates the `.xpfm` extensible platform with XRT/ZOCL support and patches the export tree for hardware emulation.
+
 ```bash
+cd /path/to/felix-155-platform
 vitis -s gen_plat.py
 ```
 
-## Required Files for QEMU and XPFM
-To run the QEMU simulation and build the XPFM platform, the following files are required:
+The script:
+- Creates the platform component with `generate_dtb=True` and `dt_zocl=1`
+- Builds the platform
+- **Post-build patches** the export directory:
+  - Adds `linux.bif` template (required by v++ package for hw_emu)
+  - Copies boot ELFs (`bl31.elf`, `u-boot.elf`, `plm.elf`, `psmfw.elf`, `pmc_cdo.bin`) to `sw/boot/`
+  - Copies QEMU hardware DTBs and `BOOT_bh.bin` to `sw/qemu/`
+  - Writes QEMU args with `-hw-dtb` enabled for the XCVP1552 memory layout
 
-- `../base_platform/top_hw_hw_emu_presynth.pdi`
-- `BOOT.BIN`
-- `versal-qemu-multiarch-ps.dtb`
-- `versal-qemu-multiarch-pmc.dtb`
-- `qemu_sd.img`
-- `pmc_cdo.0.0.bin`
-- `BOOT_bh.bin`
-- `plm.elf`
+Output: `my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/xcvp1552_custom_felix.xpfm`
 
-These files can be obtained in two ways:
-1.  **Copy from build directory**: Copy them from the Petalinux image directory: `versal_linux/my_foe_flx/images/linux/`
-2.  **Generate with Vivado**: Generate them using Vivado with the base XSA.
+After generation, verify the platform export has all required files:
 
-## Extracting PDI Components
-You can also extract the necessary binary components from the base XSA:
 ```bash
-cd xcvp_qemu
-mkdir -p pdi_files
-vivado -mode tcl
-# Within the Vivado TCL shell:
-hsi::open_hw_design ../base_platform/top_hw_hwemu.xsa
-bootgen -arch versal -dump base_platform/top_hw_hw_emu_presynth.pdi -dump_dir pdi_files
-bootgen -arch versal -image bootgen.bif -w -o BOOT.BIN
-cp pdi_files/* .
-cp ../base_platform/extracted/ext_platform_part_wrapper_0/pdi_files/gen_files/plm.elf .
+ls my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/sw/boot/
+# linux.bif  system.dtb  bl31.elf  u-boot.elf  plm.elf  psmfw.elf  pmc_cdo.bin
+
+ls my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/sw/qemu/
+# pmc_args.txt  qemu_args.txt  versal-qemu-multiarch-pmc.dtb  versal-qemu-multiarch-ps.dtb  BOOT_bh.bin
 ```
 
-## Running QEMU Simulation
-Follow these steps to perform a hardware/software co-simulation:
+### 4. Application Build and HW Emulation
 
-1.  **Prepare the Emulation Environment**:
-    Navigate to the `xcvp_qemu` directory and ensure all files listed in the [Required Files for QEMU and XPFM](#required-files-for-qemu-and-xpfm) section are present. 
+Builds the HLS kernel, links it against the platform, packages for emulation, and runs.
 
-2.  **Execute Simulation**:
-    ```bash
-    cd xcvp_qemu
-    make run_qemu
-    ```
+```bash
+cd vadd_test
 
-The `make run_qemu` command automates the startup of the PMC and PS QEMU instances and synchronizes them with the XSIM hardware simulation.
+# Build everything (HLS kernel + host app + v++ link + v++ package)
+make all
 
+# Or run individual stages:
+make xo        # HLS synthesis -> vadd_pl.xo
+make link       # v++ link -> vadd.xsa
+make host       # Cross-compile host application
+make package    # v++ package -> package/launch_hw_emu.sh
 
-add_force {/ext_platform_part_wrapper_sim_wrapper/sys_clk0_0_clk_p} -radix hex {0 0ns} {1 2500ps} -repeat_every 5000ps
+# Run hardware emulation
+cd package
+./launch_hw_emu.sh
+```
 
-add_force {/ext_platform_part_wrapper_sim_wrapper/sys_clk0_0_clk_n} -radix hex {1 0ns} {0 2500ps} -repeat_every 5000ps
+The test application (`vadd_pl`) performs a vector addition on 4096 elements via an AXI-connected HLS kernel at 300 MHz.
 
-qemu-img resize qemu_sd.img 8G
+## Custom Board Notes
+
+Since the XCVP1552 is not a standard evaluation board (VCK190/VEK280), several aspects require manual handling:
+
+**BIF template:** The platform's `sw/boot/linux.bif` must use the Vitis `<tag,filename>` placeholder syntax for hw_emu boot image generation:
+```
+the_ROM_image:
+{
+  { load=0x1000, file=<dtb,system.dtb> }
+  { core=a72-0, exception_level=el-3, trustzone, file=<atf,bl31.elf> }
+  { core=a72-0, exception_level=el-2, load=0x8000000, file=<uboot,u-boot.elf> }
+}
+```
+
+**QEMU hardware DTBs:** The `-hw-dtb` flag in the QEMU args files must be uncommented and point to the PetaLinux-generated DTBs (`versal-qemu-multiarch-pmc.dtb` / `versal-qemu-multiarch-ps.dtb`). Without this, QEMU defaults to VCK190 memory regions, which causes PMC boot hangs on the XCVP1552.
+
+**Boot ELFs in platform export:** Vitis `set_boot_dir()` only references the source directory at build time; it does not copy ELF files into the platform export tree. The `gen_plat.py` post-build step handles this.
+
+## Standalone QEMU Testing
+
+To test the base XSA boot (without v++ / XRT) using the standalone QEMU launcher:
+
+```bash
+cd xcvp_qemu
+
+# Ensure required files are present (copy from PetaLinux if needed):
+#   versal-qemu-multiarch-ps.dtb, versal-qemu-multiarch-pmc.dtb,
+#   qemu_boot.img, pmc_cdo.0.0.bin, BOOT_bh.bin, plm.elf
+
+./run_qemu.sh
+# Or: make run_qemu  (also connects to XSIM for co-simulation)
+```
+
+## Useful Commands
 

@@ -7,13 +7,14 @@ ROOT_DIR = os.path.abspath(os.getcwd())
 PLATFORM_NAME = "xcvp1552_custom_felix"
 WORKSPACE_DIR = os.path.join(ROOT_DIR, "my_workspace")
 
-# Points to the XSA (Hardware Export)
-HW_XSA = os.path.join(ROOT_DIR, "base_platform/top_hw_hwemu.xsa")
+# Separate HW and HW-EMU XSAs (required for co-simulation to work)
+HW_XSA = os.path.join(ROOT_DIR, "base_platform/top_hw.xsa")
+EMU_XSA = os.path.join(ROOT_DIR, "base_platform/top_hwemu.xsa")
 
-# Points to the 'sw' folder created by the shell script
-# IMPORTANT: Ensure 'system.dtb' is physically present in this directory!
+# PetaLinux output directories
 BOOT_DIR = os.path.join(ROOT_DIR, "versal_linux/my_foe_flx/sw/boot")
 IMAGE_DIR = os.path.join(ROOT_DIR, "versal_linux/my_foe_flx/sw/image")
+PETALNX_IMAGES = os.path.join(ROOT_DIR, "versal_linux/my_foe_flx/images/linux")
 
 # Clean previous workspace
 if os.path.exists(WORKSPACE_DIR):
@@ -23,62 +24,61 @@ client = vitis.create_client()
 client.set_workspace(path=WORKSPACE_DIR)
 
 # --- Create Platform Component ---
+# Provide both hw_design and emu_design for proper co-simulation support
+advanced_options = client.create_advanced_options_dict(dt_zocl="1", dt_overlay="0")
+
 platform = client.create_platform_component(
     name=PLATFORM_NAME,
     hw_design=HW_XSA,
+    emu_design=EMU_XSA,
     os="linux",
     cpu="psv_cortexa72",
     domain_name="xrt_linux",
-    generate_dtb=True, 
-    advanced_options=client.create_advanced_options_dict(dt_zocl="1")
+    generate_dtb=True,
+    advanced_options=advanced_options
 )
 
 domain = platform.get_domain(name="xrt_linux")
+
+# --- generate_bif() MUST be called before set_boot_dir() ---
+# This generates the linux.bif template with correct boot/ prefix paths
+domain.generate_bif()
 
 # --- Set Artifact Directories ---
 domain.set_boot_dir(path=BOOT_DIR)
 domain.set_sd_dir(path=IMAGE_DIR)
 
-# =============================================================================
-# CRITICAL FIX START: Split QEMU Arguments for Versal Multi-Arch Emulation
-# =============================================================================
-
-# 1. Generate pmc_args.txt (Targeting MicroBlaze PMC)
-# This fixes the "Boot Hang". We move all PMC/MicroBlaze binaries here.
-pmc_args_content = f"""-M microblaze-fdt 
--device loader,file={BOOT_DIR}/plm.elf,cpu-num=0 
--device loader,file={BOOT_DIR}/psmfw.elf,cpu-num=0 
--device loader,file={BOOT_DIR}/pmc_cdo.bin,cpu-num=0 
--dtb {BOOT_DIR}/versal-qemu-multiarch-pmc.dtb 
-"""
-
-pmc_args_path = os.path.join(BOOT_DIR, "pmc_args.txt")
-print(f"Writing PMC arguments to: {pmc_args_path}")
-with open(pmc_args_path, "w") as f:
-    f.write(pmc_args_content.replace('\n', ' '))
-
-# 2. Generate qemu_args.txt (Targeting ARM Cortex-A72 PS)
-# This fixes the "Missing ZOCL". We point to system.dtb instead of the generic one.
-# We also use the correct machine type '-M xlnx-versal-virt' for ARM.
-qemu_args_content = f"""-M xlnx-versal-virt 
--device loader,file={BOOT_DIR}/bl31.elf,cpu-num=0 
--device loader,file={BOOT_DIR}/u-boot.elf 
--device loader,file={IMAGE_DIR}/boot.scr,addr=0x20000000 
--dtb {BOOT_DIR}/system.dtb 
-"""
-
-qemu_args_path = os.path.join(BOOT_DIR, "qemu_args.txt")
-print(f"Writing PS QEMU arguments to: {qemu_args_path}")
-with open(qemu_args_path, "w") as f:
-    f.write(qemu_args_content.replace('\n', ' '))
-
-# =============================================================================
-# CRITICAL FIX END
-# =============================================================================
-
 # --- Build ---
 print("Building platform...")
 platform.build()
 
-print(f" Platform Generated at: {WORKSPACE_DIR}/{PLATFORM_NAME}/export/{PLATFORM_NAME}")
+# =============================================================================
+# POST-BUILD: Ensure boot ELFs are in the exported platform tree
+# =============================================================================
+EXPORT_DIR = os.path.join(
+    WORKSPACE_DIR, PLATFORM_NAME, "export", PLATFORM_NAME
+)
+PLAT_BOOT = os.path.join(EXPORT_DIR, "sw", "boot")
+PLAT_SW = os.path.join(EXPORT_DIR, "sw")
+
+# Copy boot ELFs to sw/boot/ (set_boot_dir only references, doesn't copy)
+boot_files = ["bl31.elf", "u-boot.elf"]
+for fname in boot_files:
+    src = os.path.join(BOOT_DIR, fname)
+    dst = os.path.join(PLAT_BOOT, fname)
+    if os.path.isfile(src) and not os.path.isfile(dst):
+        shutil.copy2(src, dst)
+        print(f"[patch] Copied {fname} -> sw/boot/")
+
+# Also copy to sw/ root (v++ resolves some paths against sw/ directly)
+for fname in ["system.dtb", "bl31.elf", "u-boot.elf", "plm.elf", "psmfw.elf", "pmc_cdo.bin"]:
+    src = os.path.join(PLAT_BOOT, fname)
+    if not os.path.isfile(src):
+        src = os.path.join(BOOT_DIR, fname)
+    dst = os.path.join(PLAT_SW, fname)
+    if os.path.isfile(src) and not os.path.isfile(dst):
+        shutil.copy2(src, dst)
+        print(f"[patch] Copied {fname} -> sw/")
+
+print(f"\nPlatform generated at: {EXPORT_DIR}")
 vitis.dispose()
