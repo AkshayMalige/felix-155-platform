@@ -14,7 +14,9 @@ HLS_DIR     := hls_src
 HOST_DIR    := host
 
 # --- Inputs ---
-PLATFORM    ?= ../my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/xcvp1552_custom_felix.xpfm
+# PLATFORM    ?= ../my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/xcvp1552_custom_felix.xpfm
+# PLATFORM    ?= /home/synthara/VersalPrjs/tmp/package/platform/export/platform/platform.xpfm
+PLATFORM    ?= /home/synthara/VersalPrjs/felix/AM_felix0902/felix-155-platform/my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/xcvp1552_custom_felix.xpfm
 
 # --- Artifacts ---
 LINK_CFG    := link.cfg
