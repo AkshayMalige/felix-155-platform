@@ -23,7 +23,7 @@ XCLBIN      := vadd.xclbin
 PACKAGE_DIR := package
 
 # --- Software Components ---
-SW_DIR      := /home/synthara/VersalPrjs/tmp/xcvp1552_custom_felix/export/xcvp1552_custom_felix/sw/xrt_linux
+SW_DIR      := /home/synthara/VersalPrjs/felix/AM_felix0902/felix-155-platform/my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/sw/xrt_linux
 ROOTFS      := $(SW_DIR)/image/rootfs.ext4
 IMAGE       := $(SW_DIR)/image/Image
 SYSROOT_SCRIPT := /home/synthara/VersalPrjs/felix/AM_felix0902/felix-155-platform/versal_linux/my_foe_flx/images/linux/sdk/environment-setup-cortexa72-cortexa53-amd-linux

@@ -1,0 +1,9 @@
+the_ROM_image:
+{
+    image {
+        { type=bootimage, file=vadd.xsa }  
+        { type=bootloader, file=plm.elf }
+        { type=pmcdata, file=pmc_cdo.bin }
+        { type=psm, file=psmfw.elf }
+    }
+}
