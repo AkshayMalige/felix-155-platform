@@ -5,7 +5,7 @@ SHELL := /bin/bash
 
 # --- Xilinx Tools ---
 XILINX_VITIS?= /tools/Xilinx/2025.2/Vitis
-TARGET      ?= sw_emu
+TARGET      ?= hw_emu
 
 # --- Project Settings ---
 # CRITICAL FIX 1: Match the kernel name to your hls_config.cfg (syn.top=vadd_pl)
@@ -23,7 +23,7 @@ XCLBIN      := vadd.xclbin
 PACKAGE_DIR := package
 
 # --- Software Components ---
-SW_DIR      := /home/synthara/VersalPrjs/felix/AM_felix0902/felix-155-platform/my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/sw/xrt_linux
+SW_DIR      :=/home/synthara/VersalPrjs/felix/AM_felix0902/felix-155-platform/my_workspace/xcvp1552_custom_felix/export/xcvp1552_custom_felix/sw/xrt_linux
 ROOTFS      := $(SW_DIR)/image/rootfs.ext4
 IMAGE       := $(SW_DIR)/image/Image
 SYSROOT_SCRIPT := /home/synthara/VersalPrjs/felix/AM_felix0902/felix-155-platform/versal_linux/my_foe_flx/images/linux/sdk/environment-setup-cortexa72-cortexa53-amd-linux
@@ -54,8 +54,7 @@ $(LINKED_XSA): xo
 link: $(LINKED_XSA)
 
 package: link host
-    @echo "--- Packaging Emulation Image ---"
-    v++ -p -t $(TARGET) \
+	v++ -p -t $(TARGET) \
         --platform $(PLATFORM) \
         $(LINKED_XSA) \
         --package.out_dir $(PACKAGE_DIR) \
@@ -68,6 +67,9 @@ package: link host
 		--package.image_format ext4 \
         --package.ext4_fat32_size 2048 \
         -o $(PACKAGE_DIR)/$(XCLBIN)
+
+# CRITICAL FIX 2 (Above): Added --package.ext4_fat32_size 2048
+# This sets the boot partition to 2GB, preventing the "size greater than FAT32" error.
 
 # --- Clean ---
 clean:
